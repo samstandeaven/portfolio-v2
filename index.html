@@ -43,7 +43,7 @@
 
   .divider {
     height: 1px;
-    background: #d3d6e2; /* ~15% lighter */
+    background: #d3d6e2;
     margin-bottom: 16px;
   }
 
@@ -82,7 +82,7 @@
   .project-card {
     background: #F7F8FC;
     border-radius: 16px;
-    padding: 12;
+    padding: 12px;
     min-height: 120px;
     cursor: pointer;
     border: 2px solid transparent;
@@ -232,26 +232,34 @@
       <div class="card-header">Tool expertise</div>
       <div class="divider"></div>
 
-      <div class="tool-copy active" data-tool="salesforce">
+      <div class="tool-copy active" data-tool="Salesforce">
         <p>Deep experience designing CRM workflows and improving data quality.</p>
       </div>
 
-      <div class="tool-copy" data-tool="hubspot">
+      <div class="tool-copy" data-tool="HubSpot">
         <p>Used for pipeline management, automation, and reporting.</p>
       </div>
 
+      <div class="tool-copy" data-tool="Figma">
+        <p>Design and prototyping for UX/UI projects.</p>
+      </div>
+
+      <div class="tool-copy" data-tool="Highspot">
+        <p>Enablement platform experience to improve sales content adoption.</p>
+      </div>
+
       <div class="tool-grid">
-        <div class="tool-card active" data-tool="salesforce" onclick="showTool(this)">
-          <img src="images/salesforce.png" alt="Salesforce">
+        <div class="tool-card active" data-tool="Salesforce" onclick="showTool(this)">
+          <img src="images/Salesforce.png" alt="Salesforce">
         </div>
-        <div class="tool-card" data-tool="hubspot" onclick="showTool(this)">
-          <img src="images/hubspot.png" alt="HubSpot">
+        <div class="tool-card" data-tool="HubSpot" onclick="showTool(this)">
+          <img src="images/HubSpot.png" alt="HubSpot">
         </div>
-        <div class="tool-card" data-tool="gong" onclick="showTool(this)">
-          <img src="images/gong.png" alt="Gong">
+        <div class="tool-card" data-tool="Figma" onclick="showTool(this)">
+          <img src="images/Figma.png" alt="Figma">
         </div>
-        <div class="tool-card" data-tool="figma" onclick="showTool(this)">
-          <img src="images/figma.png" alt="Figma">
+        <div class="tool-card" data-tool="Highspot" onclick="showTool(this)">
+          <img src="images/Highspot.png" alt="Highspot">
         </div>
       </div>
     </div>
@@ -290,3 +298,4 @@
 
 </body>
 </html>
+
