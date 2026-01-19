@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Portfolio Structure</title>
+
+<style>
+  body {
+    margin: 0;
+    padding: 40px;
+    font-family: Garamond, serif;
+    background: #ffffff;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* ===== Generic card ===== */
+
+  .card {
+    background: #F1F3F8;
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .card-header {
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #b5b5b5;
+    margin-bottom: 16px;
+  }
+
+  /* ===== Small cards ===== */
+
+  .small-card {
+    background: #F1F3F8;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  /* ===== Projects ===== */
+
+  .projects-overband {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .project-copy {
+    display: none;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .project-copy.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .project-card {
+    background: #e6e6e6;
+    border-radius: 16px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+
+  /* ===== Tools ===== */
+
+  .tool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .tool-card {
+    background: #e6e6e6;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  }
+
+  /* ===== Footer stat ===== */
+
+  .footer-stat {
+    background: #f2f2f2;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT COLUMN -->
+  <div class="column">
+
+    <div class="card">
+      <div class="card-header">A bit about me</div>
+      <div class="divider"></div>
+      <p>Hi I'm Sam 👋, a Franco-English [XYZ], who's spent the past few years working in Enablement & Acceleration.</p>
+      <p>I’m looking for an environment where I can learn [skill 1], [skill 2], [skill 3].</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">References</div>
+      <div class="divider"></div>
+      <p>Available upon request.</p>
+    </div>
+
+    <div class="small-card">
+      Email reveal for inquiries
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="column">
+
+    <div class="card">
+      <div class="card-header">Some of my key projects</div>
+      <div class="divider"></div>
+
+      <div class="projects-overband">
+
+        <!-- COPY BLOCKS -->
+        <div class="project-copy" data-project="sales">
+          <p>This project focused on redesigning sales processes to improve clarity.</p>
+          <p>The result was a scalable framework adopted across GTM teams.</p>
+        </div>
+
+        <div class="project-copy" data-project="onboarding">
+          <p>This project tackled SaaS onboarding for new customers.</p>
+          <p>It reduced time-to-value and improved activation metrics.</p>
+        </div>
+
+        <div class="project-copy" data-project="best-practices">
+          <p>This project documented selling best practices.</p>
+          <p>It aligned reps around consistent messaging and execution.</p>
+        </div>
+
+        <div class="project-copy" data-project="tooling">
+          <p>This project focused on tool implementation and automation.</p>
+          <p>It improved data quality and operational efficiency.</p>
+        </div>
+
+        <!-- PROJECT GRID -->
+        <div class="project-grid">
+          <div class="project-card" data-project="sales" onclick="showProject(this)">
+            Sales Process Ideation
+          </div>
+
+          <div class="project-card" data-project="onboarding" onclick="showProject(this)">
+            SaaS Onboarding
+          </div>
+
+          <div class="project-card" data-project="best-practices" onclick="showProject(this)">
+            Selling Best Practices
+          </div>
+
+          <div class="project-card" data-project="tooling" onclick="showProject(this)">
+            Tool Implementation
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Tool expertise</div>
+      <div class="divider"></div>
+
+      <div class="tool-grid">
+        <div class="tool-card">Outreach</div>
+        <div class="tool-card">Salesforce</div>
+        <div class="tool-card">HubSpot</div>
+        <div class="tool-card">Gong</div>
+        <div class="tool-card">Figma</div>
+        <div class="tool-card">Aircall</div>
+        <div class="tool-card">Highspot</div>
+        <div class="tool-card">Make / Zapier</div>
+      </div>
+    </div>
+
+    <div class="footer-stat">
+      3 years XP – SaaS – Europe
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function showProject(card) {
+    const projectId = card.getAttribute("data-project");
+    const copies = document.querySelectorAll(".project-copy");
+
+    copies.forEach(copy => {
+      if (copy.getAttribute("data-project") === projectId) {
+        copy.classList.toggle("active");
+      } else {
+        copy.classList.remove("active");
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
