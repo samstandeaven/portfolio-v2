@@ -28,8 +28,10 @@
 
   /* ===== Generic card ===== */
 
-  .card {
-    background: #F1F3F8;
+  .card,
+  .small-card,
+  .footer-stat {
+    background: #F7F8FC;
     border-radius: 16px;
     padding: 24px;
   }
@@ -41,16 +43,11 @@
 
   .divider {
     height: 1px;
-    background: #b5b5b5;
+    background: #d3d6e2; /* ~15% lighter */
     margin-bottom: 16px;
   }
 
-  /* ===== Small cards ===== */
-
   .small-card {
-    background: #F1F3F8;
-    border-radius: 12px;
-    padding: 16px;
     text-align: center;
   }
 
@@ -64,7 +61,7 @@
 
   .project-copy {
     display: none;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     opacity: 0;
     transform: translateY(-6px);
     transition: opacity 0.25s ease, transform 0.25s ease;
@@ -83,46 +80,74 @@
   }
 
   .project-card {
-    background: #e6e6e6;
+    background: #F7F8FC;
     border-radius: 16px;
-    padding: 20px;
+    padding: 28px; /* taller */
+    min-height: 120px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
   }
 
   .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  }
+
+  .project-card.active {
+    border-color: #E85B79;
   }
 
   /* ===== Tools ===== */
 
+  .tool-copy {
+    display: none;
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .tool-copy.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
   .tool-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
   }
 
   .tool-card {
-    background: #e6e6e6;
-    border-radius: 16px;
-    padding: 20px;
-    text-align: center;
+    background: #F7F8FC;
+    border-radius: 12px;
+    padding: 12px;
+    height: 64px;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+  }
+
+  .tool-card img {
+    max-height: 32px;
+    max-width: 100%;
   }
 
   .tool-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
 
-  /* ===== Footer stat ===== */
+  .tool-card.active {
+    border-color: #6955DA;
+  }
 
   .footer-stat {
-    background: #f2f2f2;
-    border-radius: 12px;
-    padding: 16px;
     text-align: center;
   }
 </style>
@@ -157,14 +182,14 @@
   <!-- RIGHT COLUMN -->
   <div class="column">
 
+    <!-- PROJECTS -->
     <div class="card">
       <div class="card-header">Some of my key projects</div>
       <div class="divider"></div>
 
       <div class="projects-overband">
 
-        <!-- COPY BLOCKS -->
-        <div class="project-copy" data-project="sales">
+        <div class="project-copy active" data-project="sales">
           <p>This project focused on redesigning sales processes to improve clarity.</p>
           <p>The result was a scalable framework adopted across GTM teams.</p>
         </div>
@@ -184,20 +209,16 @@
           <p>It improved data quality and operational efficiency.</p>
         </div>
 
-        <!-- PROJECT GRID -->
         <div class="project-grid">
-          <div class="project-card" data-project="sales" onclick="showProject(this)">
+          <div class="project-card active" data-project="sales" onclick="showProject(this)">
             Sales Process Ideation
           </div>
-
           <div class="project-card" data-project="onboarding" onclick="showProject(this)">
             SaaS Onboarding
           </div>
-
           <div class="project-card" data-project="best-practices" onclick="showProject(this)">
             Selling Best Practices
           </div>
-
           <div class="project-card" data-project="tooling" onclick="showProject(this)">
             Tool Implementation
           </div>
@@ -206,19 +227,32 @@
       </div>
     </div>
 
+    <!-- TOOLS -->
     <div class="card">
       <div class="card-header">Tool expertise</div>
       <div class="divider"></div>
 
+      <div class="tool-copy active" data-tool="salesforce">
+        <p>Deep experience designing CRM workflows and improving data quality.</p>
+      </div>
+
+      <div class="tool-copy" data-tool="hubspot">
+        <p>Used for pipeline management, automation, and reporting.</p>
+      </div>
+
       <div class="tool-grid">
-        <div class="tool-card">Outreach</div>
-        <div class="tool-card">Salesforce</div>
-        <div class="tool-card">HubSpot</div>
-        <div class="tool-card">Gong</div>
-        <div class="tool-card">Figma</div>
-        <div class="tool-card">Aircall</div>
-        <div class="tool-card">Highspot</div>
-        <div class="tool-card">Make / Zapier</div>
+        <div class="tool-card active" data-tool="salesforce" onclick="showTool(this)">
+          <img src="images/salesforce.png" alt="Salesforce">
+        </div>
+        <div class="tool-card" data-tool="hubspot" onclick="showTool(this)">
+          <img src="images/hubspot.png" alt="HubSpot">
+        </div>
+        <div class="tool-card" data-tool="gong" onclick="showTool(this)">
+          <img src="images/gong.png" alt="Gong">
+        </div>
+        <div class="tool-card" data-tool="figma" onclick="showTool(this)">
+          <img src="images/figma.png" alt="Figma">
+        </div>
       </div>
     </div>
 
@@ -232,15 +266,24 @@
 
 <script>
   function showProject(card) {
-    const projectId = card.getAttribute("data-project");
-    const copies = document.querySelectorAll(".project-copy");
+    const id = card.dataset.project;
 
-    copies.forEach(copy => {
-      if (copy.getAttribute("data-project") === projectId) {
-        copy.classList.toggle("active");
-      } else {
-        copy.classList.remove("active");
-      }
+    document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+
+    document.querySelectorAll(".project-copy").forEach(copy => {
+      copy.classList.toggle("active", copy.dataset.project === id);
+    });
+  }
+
+  function showTool(card) {
+    const id = card.dataset.tool;
+
+    document.querySelectorAll(".tool-card").forEach(c => c.classList.remove("active"));
+    card.classList.add("active");
+
+    document.querySelectorAll(".tool-copy").forEach(copy => {
+      copy.classList.toggle("active", copy.dataset.tool === id);
     });
   }
 </script>
