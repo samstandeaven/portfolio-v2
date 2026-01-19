@@ -4,11 +4,14 @@
 <meta charset="UTF-8" />
 <title>Portfolio Structure</title>
 
+<!-- Load Mirador font from Google Fonts (or host locally if needed) -->
+<link href="https://fonts.googleapis.com/css2?family=Mirador&display=swap" rel="stylesheet">
+
 <style>
   body {
     margin: 0;
     padding: 40px;
-    font-family: Restora;
+    font-family: 'Mirador', sans-serif;
     background: #ffffff;
   }
 
@@ -31,7 +34,7 @@
   .card,
   .small-card,
   .footer-stat {
-    background: #9D9D8C;
+    background: #E9ECEF; /* updated background */
     border-radius: 16px;
     padding: 24px;
   }
@@ -54,7 +57,7 @@
   /* ===== Projects ===== */
 
   .projects-overband {
-    background: #ffffff;
+    background: #E9ECEF;
     padding: 16px;
     border-radius: 12px;
   }
@@ -75,23 +78,27 @@
 
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(4, 1fr); /* 4 projects in one row */
+    gap: 12px;
   }
 
   .project-card {
-    background: #9D9D8C;
+    background: #E9ECEF;
     border-radius: 16px;
     padding: 12px;
-    min-height: 120px;
+    height: 60px; /* reduced height */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center text */
+    text-align: center;
     cursor: pointer;
     border: 2px solid transparent;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
 
   .project-card.active {
@@ -121,7 +128,7 @@
   }
 
   .tool-card {
-    background: #9D9D8C;
+    background: #E9ECEF;
     border-radius: 12px;
     padding: 12px;
     height: 64px;
@@ -191,22 +198,18 @@
 
         <div class="project-copy active" data-project="sales">
           <p>This project focused on redesigning sales processes to improve clarity.</p>
-          <p>The result was a scalable framework adopted across GTM teams.</p>
         </div>
 
         <div class="project-copy" data-project="onboarding">
           <p>This project tackled SaaS onboarding for new customers.</p>
-          <p>It reduced time-to-value and improved activation metrics.</p>
         </div>
 
         <div class="project-copy" data-project="best-practices">
           <p>This project documented selling best practices.</p>
-          <p>It aligned reps around consistent messaging and execution.</p>
         </div>
 
         <div class="project-copy" data-project="tooling">
           <p>This project focused on tool implementation and automation.</p>
-          <p>It improved data quality and operational efficiency.</p>
         </div>
 
         <div class="project-grid">
@@ -298,4 +301,5 @@
 
 </body>
 </html>
+
 
