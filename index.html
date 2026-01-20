@@ -14,13 +14,14 @@ body {
   margin: 0;
   padding: 32px;
   font-family: Georgia, serif;
-  background: #F4EFE6;
+  background: #ECE6D4; /* cream background */
+  color: #FFFFFF; /* text in white */
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr 1fr; /* 50-50 layout */
+  gap: 20px; /* reduced spacing between columns */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -28,17 +29,17 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px; /* reduced vertical spacing */
 }
 
 /* ===== Generic cards ===== */
-
 .card,
 .small-card,
 .footer-stat {
-  background: #5E6C5B;
+  background: #9D9D8C; /* green/grey card */
   border-radius: 16px;
   padding: 32px;
+  color: #FFFFFF;
 }
 
 .card-header {
@@ -58,7 +59,6 @@ body {
 }
 
 /* ===== Projects ===== */
-
 .projects-overband {
   padding-top: 8px;
 }
@@ -74,22 +74,20 @@ body {
 
 /* overlay */
 .project-overlay {
-  background: #FBF8F2;
+  background: #ECE6D4; /* cream overlay */
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* removed horizontal scrolling */
 }
 
 .project-grid {
   display: flex;
   gap: 12px;
-  width: max-content;
 }
 
 .project-card {
-  background: #5E6C5B;
+  background: #9D9D8C;
   border-radius: 14px;
   height: 56px;
   min-width: 180px;
@@ -100,8 +98,7 @@ body {
   text-align: center;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: all 0.25s ease;
-  scroll-snap-align: start;
+  transition: border-color 0.25s ease;
 }
 
 .project-card:hover {
@@ -109,12 +106,11 @@ body {
 }
 
 .project-card.active {
-  border-color: #06AB78;
-  height: 70px;
+  border-color: #06AB78; /* green indicator only */
+  /* height and width no longer change */
 }
 
 /* ===== Tools ===== */
-
 .tool-copy {
   display: none;
   margin-bottom: 16px;
@@ -126,22 +122,20 @@ body {
 
 /* overlay */
 .tool-overlay {
-  background: #FBF8F2;
+  background: #ECE6D4; /* cream overlay */
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* removed horizontal scrolling */
 }
 
 .tool-grid {
   display: flex;
   gap: 12px;
-  width: max-content;
 }
 
 .tool-card {
-  background: #5E6C5B;
+  background: #9D9D8C;
   border-radius: 12px;
   padding: 12px;
   height: 64px;
@@ -151,9 +145,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s ease;
-  flex-shrink: 0;
-  scroll-snap-align: start;
+  transition: border-color 0.25s ease;
 }
 
 .tool-card img {
@@ -162,9 +154,8 @@ body {
 }
 
 .tool-card.active {
-  border-color: #06AB78;
-  width: 120px;
-  height: 72px;
+  border-color: #06AB78; /* green indicator only */
+  /* no resizing */
 }
 
 /* ===== Footer ===== */
@@ -279,3 +270,4 @@ function showProject(card) {
 
 </body>
 </html>
+
