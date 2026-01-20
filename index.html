@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <title>Portfolio Structure</title>
-
 <style>
-/* ===== Global fix ===== */
+/* ===== Global ===== */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -14,42 +13,44 @@ body {
   margin: 0;
   padding: 32px;
   font-family: Georgia, serif;
-  background: #ECE6D4; /* cream background */
-  color: #FFFFFF; /* text in white */
+  background: #FFFFFF; /* page background white */
+  color: #000000; /* text black */
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr; /* 50-50 layout */
-  gap: 20px; /* reduced spacing between columns */
+  gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Make columns match height */
 .column {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* reduced vertical spacing */
+  gap: 24px;
 }
 
-/* ===== Generic cards ===== */
+/* ===== Cards ===== */
 .card,
 .small-card,
 .footer-stat {
-  background: #9D9D8C; /* green/grey card */
+  background: #F3F3F3; /* grey boxes */
   border-radius: 16px;
   padding: 32px;
-  color: #FFFFFF;
+  width: 100%; /* ensure equal width */
+  min-height: 120px;
 }
 
 .card-header {
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .divider {
   height: 1px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.1);
   margin-bottom: 16px;
 }
 
@@ -72,13 +73,11 @@ body {
   display: block;
 }
 
-/* overlay */
 .project-overlay {
-  background: #ECE6D4; /* cream overlay */
+  background: #FFFFFF; /* overlay white */
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
-  /* removed horizontal scrolling */
 }
 
 .project-grid {
@@ -87,15 +86,14 @@ body {
 }
 
 .project-card {
-  background: #9D9D8C;
-  border-radius: 14px;
+  background: #F3F3F3;
+  border-radius: 12px;
   height: 56px;
   min-width: 180px;
   padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   cursor: pointer;
   border: 2px solid transparent;
   transition: border-color 0.25s ease;
@@ -106,8 +104,7 @@ body {
 }
 
 .project-card.active {
-  border-color: #06AB78; /* green indicator only */
-  /* height and width no longer change */
+  border-color: #06AB78; /* only color indicates active */
 }
 
 /* ===== Tools ===== */
@@ -120,22 +117,21 @@ body {
   display: block;
 }
 
-/* overlay */
 .tool-overlay {
-  background: #ECE6D4; /* cream overlay */
+  background: #FFFFFF;
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
-  /* removed horizontal scrolling */
 }
 
 .tool-grid {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .tool-card {
-  background: #9D9D8C;
+  background: #F3F3F3;
   border-radius: 12px;
   padding: 12px;
   height: 64px;
@@ -154,17 +150,22 @@ body {
 }
 
 .tool-card.active {
-  border-color: #06AB78; /* green indicator only */
-  /* no resizing */
+  border-color: #06AB78; /* only color indicates active */
 }
 
 /* ===== Footer ===== */
 .footer-stat {
   margin-top: 8px;
 }
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
-
 <body>
 
 <div class="container">
@@ -200,19 +201,15 @@ body {
       <div class="divider"></div>
 
       <div class="projects-overband">
-
         <div class="project-copy active" data-project="sales">
           <p>This project focused on redesigning sales processes to improve clarity.</p>
         </div>
-
         <div class="project-copy" data-project="onboarding">
           <p>This project tackled SaaS onboarding for new customers.</p>
         </div>
-
         <div class="project-copy" data-project="best-practices">
           <p>This project documented selling best practices.</p>
         </div>
-
         <div class="project-copy" data-project="enablement">
           <p>This project focused on product enablement and internal adoption.</p>
         </div>
@@ -241,10 +238,10 @@ body {
       <div class="tool-overlay">
         <div class="tool-grid">
           <div class="tool-card active"><img src="Hubspot.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Salesforce.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Figma.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Highspot.png" alt="Highspot"></div>
+          <div class="tool-card"><img src="Salesforce.png" alt="Salesforce"></div>
+          <div class="tool-card"><img src="Outreach.png" alt="Outreach"></div>
+          <div class="tool-card"><img src="Figma.png" alt="Figma"></div>
         </div>
       </div>
     </div>
