@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <title>Portfolio Structure</title>
 
-<!-- Load Montserrat from Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Fonts: Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ===== Global ===== */
@@ -15,17 +15,24 @@
 
 body {
   margin: 0;
-  padding: 32px;
-  font-family: 'Montserrat', sans-serif; /* Montserrat applied */
-  background: #FFFFFF; /* page background white */
-  color: #000000; /* text black */
+  padding: 24px; /* reduced padding */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  background: #FFFFFF;
+  color: #000000;
+}
+
+p {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 /* ===== Container and Columns ===== */
 .container {
-  display: flex; /* flex for equal columns */
+  display: flex;
   gap: 24px;
-  max-width: 1200px;
+  max-width: 1440px; /* wider layout */
   margin: 0 auto;
 }
 
@@ -33,22 +40,25 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex: 1; /* ensures both columns are equal width */
+  flex: 1;
 }
 
 /* ===== Cards ===== */
 .card,
 .small-card,
 .footer-stat {
-  background: #F3F3F3; /* grey boxes */
+  background: #F3F3F3;
   border-radius: 16px;
   padding: 32px;
-  width: 100%; /* ensure equal width */
+  width: 100%;
   min-height: 120px;
 }
 
 .card-header {
-  font-weight: 600; /* semi-bold for headers */
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
   margin-bottom: 12px;
 }
 
@@ -78,7 +88,7 @@ body {
 }
 
 .project-overlay {
-  background: #FFFFFF; /* overlay white */
+  background: #FFFFFF;
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
@@ -87,7 +97,7 @@ body {
 .project-grid {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap; /* prevent overflowing */
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -95,16 +105,15 @@ body {
   background: #F3F3F3;
   border-radius: 12px;
   height: 56px;
-  flex: 1;         /* equal width distribution */
-  min-width: 0;    /* prevent forcing column width */
-  max-width: 100%;
+  flex: 1;
+  min-width: 0;
   padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.2s ease;
 }
 
 .project-card:hover {
@@ -112,7 +121,7 @@ body {
 }
 
 .project-card.active {
-  border-color: #06AB78; /* only color indicates active */
+  border-color: #06AB78;
 }
 
 /* ===== Tools ===== */
@@ -144,9 +153,8 @@ body {
   border-radius: 12px;
   padding: 12px;
   height: 64px;
-  flex: 1;         /* equal width distribution */
-  min-width: 0;    /* prevent forcing column width */
-  max-width: 100%;
+  flex: 1;
+  min-width: 0;
   cursor: pointer;
   border: 2px solid transparent;
   display: flex;
@@ -161,7 +169,7 @@ body {
 }
 
 .tool-card.active {
-  border-color: #06AB78; /* only color indicates active */
+  border-color: #06AB78;
 }
 
 /* ===== Footer ===== */
@@ -172,11 +180,12 @@ body {
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .container {
-    flex-direction: column; /* stack columns on smaller screens */
+    flex-direction: column;
   }
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -185,10 +194,10 @@ body {
   <div class="column">
 
     <div class="card">
-      <div class="card-header">A bit about me 🔍</div>
+      <div class="card-header">A bit about me 💬</div>
       <div class="divider"></div>
       <p>Hi I'm Sam 👋, a Paris based [X], who's spent the past couple of years creating selling processes within a 200M$ ARR unicorn, and prior to that building the executive teams of VC backed startups.</p>
-      <p>I value autonomy, enthusiasm and and above all learning - I’m looking for an environment where I can:</p>
+      <p>I value autonomy, enthusiasm and above all learning — I’m looking for an environment where I can:</p>
       <p>[skill 1]: XYZ.</p>
       <p>[skill 2]: XYZ.</p>
       <p>[skill 3]: XYZ.</p>
@@ -215,6 +224,7 @@ body {
       <div class="divider"></div>
 
       <div class="projects-overband">
+
         <div class="project-copy active" data-project="sales">
           <p>This project focused on redesigning sales processes to improve clarity.</p>
         </div>
@@ -257,7 +267,7 @@ body {
           <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
           <div class="tool-card"><img src="Figma.png" alt="Figma"></div>
           <div class="tool-card"><img src="Aircall.png" alt="Aircall"></div>
-          <div class="tool-card"><img src="Zapier.png" alt="Zapier"></div> 
+          <div class="tool-card"><img src="Zapier.png" alt="Zapier"></div>
         </div>
       </div>
     </div>
