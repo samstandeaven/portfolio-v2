@@ -17,19 +17,19 @@ body {
   color: #000000; /* text black */
 }
 
+/* ===== Container and Columns ===== */
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* 50-50 layout */
+  display: flex; /* flex for equal columns */
   gap: 24px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Make columns match height */
 .column {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1; /* ensures both columns are equal width */
 }
 
 /* ===== Cards ===== */
@@ -83,13 +83,17 @@ body {
 .project-grid {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap; /* prevent overflowing */
+  width: 100%;
 }
 
 .project-card {
   background: #F3F3F3;
   border-radius: 12px;
   height: 56px;
-  min-width: 180px;
+  flex: 1;         /* equal width distribution */
+  min-width: 0;    /* prevent forcing column width */
+  max-width: 100%;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -128,6 +132,7 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .tool-card {
@@ -135,7 +140,9 @@ body {
   border-radius: 12px;
   padding: 12px;
   height: 64px;
-  width: 96px;
+  flex: 1;         /* equal width distribution */
+  min-width: 0;    /* prevent forcing column width */
+  max-width: 100%;
   cursor: pointer;
   border: 2px solid transparent;
   display: flex;
@@ -161,7 +168,7 @@ body {
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .container {
-    grid-template-columns: 1fr;
+    flex-direction: column; /* stack columns on smaller screens */
   }
 }
 </style>
@@ -238,10 +245,10 @@ body {
       <div class="tool-overlay">
         <div class="tool-grid">
           <div class="tool-card active"><img src="Hubspot.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Highspot.png" alt="Highspot"></div>
-          <div class="tool-card"><img src="Salesforce.png" alt="Salesforce"></div>
-          <div class="tool-card"><img src="Outreach.png" alt="Outreach"></div>
-          <div class="tool-card"><img src="Figma.png" alt="Figma"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
         </div>
       </div>
     </div>
