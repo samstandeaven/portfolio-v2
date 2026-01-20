@@ -4,21 +4,18 @@
 <meta charset="UTF-8" />
 <title>Portfolio Structure</title>
 
-<!-- Load Mirador font from Google Fonts (or host locally if needed) -->
-<link href="https://fonts.googleapis.com/css2?family=Mirador&display=swap" rel="stylesheet">
-
 <style>
   body {
     margin: 0;
-    padding: 40px;
-    font-family: 'Mirador', sans-serif;
+    padding: 32px; /* slightly reduced outer padding */
+    font-family: Georgia, serif;
     background: #ffffff;
   }
 
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px; /* reduced horizontal gap */
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -26,7 +23,7 @@
   .column {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px; /* reduced vertical gap */
   }
 
   /* ===== Generic card ===== */
@@ -34,9 +31,9 @@
   .card,
   .small-card,
   .footer-stat {
-    background: #E9ECEF; /* updated background */
+    background: #E9ECEF;
     border-radius: 16px;
-    padding: 24px;
+    padding: 32px; /* increased padding */
   }
 
   .card-header {
@@ -57,52 +54,52 @@
   /* ===== Projects ===== */
 
   .projects-overband {
-    background: #E9ECEF;
-    padding: 16px;
-    border-radius: 12px;
+    padding: 16px 0;
   }
 
   .project-copy {
     display: none;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    margin-bottom: 16px;
   }
 
   .project-copy.active {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
+  }
+
+  /* white overlay ONLY for project cards */
+  .project-overlay {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
   }
 
   .project-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 projects in one row */
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
   }
 
   .project-card {
-    background: #E9ECEF;
-    border-radius: 16px;
-    padding: 12px;
-    height: 60px; /* reduced height */
+    background: #ffffff;
+    border-radius: 14px;
+    height: 56px;
     display: flex;
     align-items: center;
-    justify-content: center; /* center text */
+    justify-content: center;
     text-align: center;
     cursor: pointer;
     border: 2px solid transparent;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    padding: 12px;
+    transition: all 0.2s ease;
   }
 
   .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
   }
 
   .project-card.active {
-    border-color: #E85B79;
+    border-color: #06AB78;
+    padding: 15px; /* +25% padding */
   }
 
   /* ===== Tools ===== */
@@ -110,34 +107,39 @@
   .tool-copy {
     display: none;
     margin-bottom: 16px;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   .tool-copy.active {
     display: block;
-    opacity: 1;
-    transform: translateY(0);
+  }
+
+  /* white overlay with horizontal scroll */
+  .tool-overlay {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    overflow-x: auto;
   }
 
   .tool-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 12px;
+    width: max-content;
   }
 
   .tool-card {
-    background: #E9ECEF;
+    background: #ffffff;
     border-radius: 12px;
     padding: 12px;
     height: 64px;
+    width: 96px;
     cursor: pointer;
     border: 2px solid transparent;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
   }
 
   .tool-card img {
@@ -145,13 +147,9 @@
     max-width: 100%;
   }
 
-  .tool-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-  }
-
   .tool-card.active {
-    border-color: #6955DA;
+    border-color: #06AB78;
+    padding: 15px; /* +25% padding */
   }
 
   .footer-stat {
@@ -208,22 +206,24 @@
           <p>This project documented selling best practices.</p>
         </div>
 
-        <div class="project-copy" data-project="tooling">
-          <p>This project focused on tool implementation and automation.</p>
+        <div class="project-copy" data-project="enablement">
+          <p>This project focused on product enablement and internal adoption.</p>
         </div>
 
-        <div class="project-grid">
-          <div class="project-card active" data-project="sales" onclick="showProject(this)">
-            Sales Process Ideation
-          </div>
-          <div class="project-card" data-project="onboarding" onclick="showProject(this)">
-            SaaS Onboarding
-          </div>
-          <div class="project-card" data-project="best-practices" onclick="showProject(this)">
-            Selling Best Practices
-          </div>
-          <div class="project-card" data-project="tooling" onclick="showProject(this)">
-            Tool Implementation
+        <div class="project-overlay">
+          <div class="project-grid">
+            <div class="project-card active" data-project="sales" onclick="showProject(this)">
+              Sales Processes
+            </div>
+            <div class="project-card" data-project="onboarding" onclick="showProject(this)">
+              SaaS Onboarding
+            </div>
+            <div class="project-card" data-project="best-practices" onclick="showProject(this)">
+              Selling Best Practices
+            </div>
+            <div class="project-card" data-project="enablement" onclick="showProject(this)">
+              Product Enablement
+            </div>
           </div>
         </div>
 
@@ -235,34 +235,27 @@
       <div class="card-header">Tool expertise</div>
       <div class="divider"></div>
 
-      <div class="tool-copy active" data-tool="Salesforce">
-        <p>Deep experience designing CRM workflows and improving data quality.</p>
-      </div>
-
-      <div class="tool-copy" data-tool="HubSpot">
+      <div class="tool-copy active">
         <p>Used for pipeline management, automation, and reporting.</p>
       </div>
 
-      <div class="tool-copy" data-tool="Figma">
-        <p>Design and prototyping for UX/UI projects.</p>
-      </div>
-
-      <div class="tool-copy" data-tool="Highspot">
-        <p>Enablement platform experience to improve sales content adoption.</p>
-      </div>
-
-      <div class="tool-grid">
-        <div class="tool-card active" data-tool="Salesforce" onclick="showTool(this)">
-          <img src="images/Salesforce.png" alt="Salesforce">
-        </div>
-        <div class="tool-card" data-tool="HubSpot" onclick="showTool(this)">
-         <img src="Hubspot.png" alt="HubSpot">
-        </div>
-        <div class="tool-card" data-tool="Figma" onclick="showTool(this)">
-          <img src="images/Figma.png" alt="Figma">
-        </div>
-        <div class="tool-card" data-tool="Highspot" onclick="showTool(this)">
-          <img src="images/Highspot.png" alt="Highspot">
+      <div class="tool-overlay">
+        <div class="tool-grid">
+          <div class="tool-card active">
+            <img src="Hubspot.png" alt="HubSpot">
+          </div>
+          <div class="tool-card">
+            <img src="Hubspot.png" alt="HubSpot">
+          </div>
+          <div class="tool-card">
+            <img src="Hubspot.png" alt="HubSpot">
+          </div>
+          <div class="tool-card">
+            <img src="Hubspot.png" alt="HubSpot">
+          </div>
+          <div class="tool-card">
+            <img src="Hubspot.png" alt="HubSpot">
+          </div>
         </div>
       </div>
     </div>
@@ -286,20 +279,7 @@
       copy.classList.toggle("active", copy.dataset.project === id);
     });
   }
-
-  function showTool(card) {
-    const id = card.dataset.tool;
-
-    document.querySelectorAll(".tool-card").forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-
-    document.querySelectorAll(".tool-copy").forEach(copy => {
-      copy.classList.toggle("active", copy.dataset.tool === id);
-    });
-  }
 </script>
 
 </body>
 </html>
-
-
