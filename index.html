@@ -5,156 +5,172 @@
 <title>Portfolio Structure</title>
 
 <style>
-  body {
-    margin: 0;
-    padding: 32px; /* slightly reduced outer padding */
-    font-family: Georgia, serif;
-    background: #F4EFE6;
-  }
+/* ===== Global fix ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-  .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px; /* reduced horizontal gap */
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+body {
+  margin: 0;
+  padding: 32px;
+  font-family: Georgia, serif;
+  background: #F4EFE6;
+}
 
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* reduced vertical gap */
-  }
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-  /* ===== Generic card ===== */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .card,
-  .small-card,
-  .footer-stat {
-    background: #5E6C5B;
-    border-radius: 16px;
-    padding: 32px; /* increased padding */
-  }
+/* ===== Generic cards ===== */
 
-  .card-header {
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
+.card,
+.small-card,
+.footer-stat {
+  background: #5E6C5B;
+  border-radius: 16px;
+  padding: 32px;
+}
 
-  .divider {
-    height: 1px;
-    background: #d3d6e2;
-    margin-bottom: 16px;
-  }
+.card-header {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
 
-  .small-card {
-    text-align: center;
-  }
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.25);
+  margin-bottom: 16px;
+}
 
-  /* ===== Projects ===== */
+.small-card,
+.footer-stat {
+  text-align: center;
+}
 
-  .projects-overband {
-    padding: 16px 0;
-  }
+/* ===== Projects ===== */
 
-  .project-copy {
-    display: none;
-    margin-bottom: 16px;
-  }
+.projects-overband {
+  padding-top: 8px;
+}
 
-  .project-copy.active {
-    display: block;
-  }
+.project-copy {
+  display: none;
+  margin-bottom: 16px;
+}
 
-  /* cream overlay ONLY for project cards */
-  .project-overlay {
-    background: #F4EFE6;
-    padding: 16px;
-    border-radius: 12px;
-  }
+.project-copy.active {
+  display: block;
+}
 
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-  }
+/* overlay */
+.project-overlay {
+  background: #FBF8F2;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
 
-  .project-card {
-    background: #5E6C5B;
-    border-radius: 14px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    border: 2px solid transparent;
-    padding: 12px;
-    transition: all 0.2s ease;
-  }
+.project-grid {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+}
 
-  .project-card:hover {
-    transform: translateY(-2px);
-  }
+.project-card {
+  background: #5E6C5B;
+  border-radius: 14px;
+  height: 56px;
+  min-width: 180px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.25s ease;
+  scroll-snap-align: start;
+}
 
-  .project-card.active {
-    border-color: #06AB78;
-    padding: 15px; /* +25% padding */
-  }
+.project-card:hover {
+  transform: translateY(-2px);
+}
 
-  /* ===== Tools ===== */
+.project-card.active {
+  border-color: #06AB78;
+  height: 70px;
+}
 
-  .tool-copy {
-    display: none;
-    margin-bottom: 16px;
-  }
+/* ===== Tools ===== */
 
-  .tool-copy.active {
-    display: block;
-  }
+.tool-copy {
+  display: none;
+  margin-bottom: 16px;
+}
 
-  /* cream overlay with horizontal scroll */
-  .tool-overlay {
-    background: #F4EFE6;
-    padding: 16px;
-    border-radius: 12px;
-    overflow-x: auto;
-  }
+.tool-copy.active {
+  display: block;
+}
 
-  .tool-grid {
-    display: flex;
-    gap: 12px;
-    width: max-content;
-  }
+/* overlay */
+.tool-overlay {
+  background: #FBF8F2;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
 
-  .tool-card {
-    background: #5E6C5B;
-    border-radius: 12px;
-    padding: 12px;
-    height: 64px;
-    width: 96px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-  }
+.tool-grid {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+}
 
-  .tool-card img {
-    max-height: 32px;
-    max-width: 100%;
-  }
+.tool-card {
+  background: #5E6C5B;
+  border-radius: 12px;
+  padding: 12px;
+  height: 64px;
+  width: 96px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
 
-  .tool-card.active {
-    border-color: #06AB78;
-    padding: 15px; /* +25% padding */
-  }
+.tool-card img {
+  max-height: 32px;
+  max-width: 100%;
+}
 
-  .footer-stat {
-    text-align: center;
-  }
+.tool-card.active {
+  border-color: #06AB78;
+  width: 120px;
+  height: 72px;
+}
+
+/* ===== Footer ===== */
+.footer-stat {
+  margin-top: 8px;
+}
 </style>
 </head>
 
@@ -162,7 +178,7 @@
 
 <div class="container">
 
-  <!-- LEFT COLUMN -->
+  <!-- LEFT -->
   <div class="column">
 
     <div class="card">
@@ -184,7 +200,7 @@
 
   </div>
 
-  <!-- RIGHT COLUMN -->
+  <!-- RIGHT -->
   <div class="column">
 
     <!-- PROJECTS -->
@@ -212,18 +228,10 @@
 
         <div class="project-overlay">
           <div class="project-grid">
-            <div class="project-card active" data-project="sales" onclick="showProject(this)">
-              Sales Processes
-            </div>
-            <div class="project-card" data-project="onboarding" onclick="showProject(this)">
-              SaaS Onboarding
-            </div>
-            <div class="project-card" data-project="best-practices" onclick="showProject(this)">
-              Selling Best Practices
-            </div>
-            <div class="project-card" data-project="enablement" onclick="showProject(this)">
-              Product Enablement
-            </div>
+            <div class="project-card active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
+            <div class="project-card" data-project="onboarding" onclick="showProject(this)">SaaS Onboarding</div>
+            <div class="project-card" data-project="best-practices" onclick="showProject(this)">Selling Best Practices</div>
+            <div class="project-card" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
           </div>
         </div>
 
@@ -241,21 +249,11 @@
 
       <div class="tool-overlay">
         <div class="tool-grid">
-          <div class="tool-card active">
-            <img src="Hubspot.png" alt="HubSpot">
-          </div>
-          <div class="tool-card">
-            <img src="Hubspot.png" alt="HubSpot">
-          </div>
-          <div class="tool-card">
-            <img src="Hubspot.png" alt="HubSpot">
-          </div>
-          <div class="tool-card">
-            <img src="Hubspot.png" alt="HubSpot">
-          </div>
-          <div class="tool-card">
-            <img src="Hubspot.png" alt="HubSpot">
-          </div>
+          <div class="tool-card active"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
         </div>
       </div>
     </div>
@@ -265,20 +263,18 @@
     </div>
 
   </div>
-
 </div>
 
 <script>
-  function showProject(card) {
-    const id = card.dataset.project;
+function showProject(card) {
+  const id = card.dataset.project;
+  document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
+  card.classList.add("active");
 
-    document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-
-    document.querySelectorAll(".project-copy").forEach(copy => {
-      copy.classList.toggle("active", copy.dataset.project === id);
-    });
-  }
+  document.querySelectorAll(".project-copy").forEach(copy => {
+    copy.classList.toggle("active", copy.dataset.project === id);
+  });
+}
 </script>
 
 </body>
