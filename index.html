@@ -15,7 +15,7 @@
 
 body {
   margin: 0;
-  padding: 24px; /* reduced padding */
+  padding: 24px;
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.6;
@@ -28,11 +28,16 @@ p {
   color: rgba(0, 0, 0, 0.85);
 }
 
+strong {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.95);
+}
+
 /* ===== Container and Columns ===== */
 .container {
   display: flex;
   gap: 24px;
-  max-width: 1440px; /* wider layout */
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -71,6 +76,59 @@ p {
 .small-card,
 .footer-stat {
   text-align: center;
+}
+
+/* ===== Quotes ===== */
+.quote {
+  display: none;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.quote.active {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== Email Reveal ===== */
+.email-card {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: #F3F3F3;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.email-card:hover {
+  background: #e0e0e0;
+}
+
+.email-card .email-text {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.email-card.revealed .email-text {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.email-card .email-placeholder {
+  transition: opacity 0.4s ease;
+}
+
+.email-card.revealed .email-placeholder {
+  opacity: 0;
 }
 
 /* ===== Projects ===== */
@@ -172,11 +230,6 @@ p {
   border-color: #06AB78;
 }
 
-/* ===== Footer ===== */
-.footer-stat {
-  margin-top: 8px;
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .container {
@@ -196,21 +249,56 @@ p {
     <div class="card">
       <div class="card-header">A bit about me 💬</div>
       <div class="divider"></div>
-      <p>Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes within a 200M$ ARR unicorn, and prior building the executive teams of VC backed startups.</p>
-      <p>I’m looking to continue building, and to that I continuously bring enthusiasm and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:</p>
-      <p>> Bridge the technical to the value: I've engineered AI Agents & tool automations. I want to further translate customer challenges into scalable, technical solutions.</p>
-      <p>> Master communications: I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps. I want to enhance my adaptability to my audience to lead the outcome I need</p>
-      <p>> Design creatively with autonomy: I've created learning programs and designed visual assets for both internal teams & buyers. I want to build on my skills to drive visual impact.</p>
+
+      <p>
+        Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes
+        within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.
+      </p>
+
+      <p>
+        I’m looking to continue building, and to that I continuously bring enthusiasm
+        and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:
+      </p>
+
+      <p>
+        &gt; <strong>Bridge the technical to the value:</strong>
+        I've engineered AI Agents & tool automations. I want to further translate customer
+        challenges into scalable, technical solutions.
+      </p>
+
+      <p>
+        &gt; <strong>Master communications:</strong>
+        I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps.
+        I want to enhance my adaptability to my audience to lead the outcome I need.
+      </p>
+
+      <p>
+        &gt; <strong>Design creatively with autonomy:</strong>
+        I've created learning programs and designed visual assets for both internal teams & buyers.
+        I want to build on my skills to drive visual impact.
+      </p>
     </div>
 
     <div class="card">
       <div class="card-header">What some of my peers have said 💬</div>
       <div class="divider"></div>
-      <p>Placeholder</p>
+
+      <p class="quote active">
+        “Sam has an exceptional ability to translate complex ideas into actionable outcomes.”
+      </p>
+
+      <p class="quote">
+        “One of the rare people who combines operational rigor with real creative thinking.”
+      </p>
+
+      <p class="quote">
+        “A natural owner — gives clarity, momentum, and direction to any project.”
+      </p>
     </div>
 
-    <div class="small-card">
-      Email reveal for inquiries
+    <div class="small-card email-card" onclick="revealEmail(this)">
+      <span class="email-placeholder">Email reveal for inquiries</span>
+      <span class="email-text">sam.standeaven@gmail.com</span>
     </div>
 
   </div>
@@ -218,7 +306,6 @@ p {
   <!-- RIGHT -->
   <div class="column">
 
-    <!-- PROJECTS -->
     <div class="card">
       <div class="card-header">Some of my key projects 🎨</div>
       <div class="divider"></div>
@@ -228,15 +315,18 @@ p {
         <div class="project-copy active" data-project="sales">
           <p>I created and rolled out a new enterprise sales process, mapping key entry & exit criteria across the buyer journey, to facilitate a move upmarket.</p>
         </div>
+
         <div class="project-copy" data-project="onboarding">
           <p>Defined, created and managed an onboarding journey from scratch for pre-sale GTM teams and personally onboarded 60+ newcomers.</p>
         </div>
+
         <div class="project-copy" data-project="engineering">
           <p>Engineered & rolled out AI scorecards for teams through Gong, Attention.tech & Aircall.</p>
-          <p>Defined & deployed AI Voice Agents on sales inbound lines to capture all missed conversations.</p>  
+          <p>Defined & deployed AI Voice Agents on sales inbound lines to capture all missed conversations.</p>
         </div>
+
         <div class="project-copy" data-project="enablement">
-          <p>Led global product workshops across the release of new SKUs to enable GTM teams on value positioning best practices. See an example here.</p>
+          <p>Led global product workshops across the release of new SKUs to enable GTM teams on value positioning best practices.</p>
         </div>
 
         <div class="project-overlay">
@@ -251,28 +341,6 @@ p {
       </div>
     </div>
 
-    <!-- TOOLS -->
-    <div class="card">
-      <div class="card-header">Tool expertise 🧰</div>
-      <div class="divider"></div>
-
-      <div class="tool-copy active">
-        <p>Used for pipeline management, automation, and reporting.</p>
-      </div>
-
-      <div class="tool-overlay">
-        <div class="tool-grid">
-          <div class="tool-card active"><img src="Salesforce.png" alt="Salesforce"></div>
-          <div class="tool-card"><img src="Outreach.png" alt="Outreach"></div>
-          <div class="tool-card"><img src="Highspot.png" alt="Highspot"></div>
-          <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
-          <div class="tool-card"><img src="Figma.png" alt="Figma"></div>
-          <div class="tool-card"><img src="Aircall.png" alt="Aircall"></div>
-          <div class="tool-card"><img src="Zapier.png" alt="Zapier"></div>
-        </div>
-      </div>
-    </div>
-
     <div class="footer-stat">
       3 years XP – SaaS – Europe
     </div>
@@ -283,15 +351,35 @@ p {
 <script>
 function showProject(card) {
   const id = card.dataset.project;
-  document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
+
+  document.querySelectorAll(".project-card").forEach(c =>
+    c.classList.remove("active")
+  );
   card.classList.add("active");
 
-  document.querySelectorAll(".project-copy").forEach(copy => {
-    copy.classList.toggle("active", copy.dataset.project === id);
-  });
+  document.querySelectorAll(".project-copy").forEach(copy =>
+    copy.classList.toggle("active", copy.dataset.project === id)
+  );
+}
+
+// Quote rotation
+let currentQuote = 0;
+const quotes = document.querySelectorAll(".quote");
+
+setInterval(() => {
+  quotes[currentQuote].classList.remove("active");
+  currentQuote = (currentQuote + 1) % quotes.length;
+  quotes[currentQuote].classList.add("active");
+}, 4000);
+
+// Email reveal
+function revealEmail(card) {
+  card.classList.add('revealed');
+  card.onclick = null;
 }
 </script>
 
 </body>
 </html>
+
 
