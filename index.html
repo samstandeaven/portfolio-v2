@@ -182,6 +182,13 @@ strong {
   display: block;
 }
 
+.project-overlay {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
 .project-grid {
   display: flex;
   gap: 12px;
@@ -254,7 +261,14 @@ strong {
 <div class="card">
   <div class="card-header">A bit about me 💬</div>
   <div class="divider"></div>
-  <p>Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.</p>
+  <p>
+    Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes
+    within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.
+  </p>
+  <p>
+    I’m looking to continue building, and to that I continuously bring enthusiasm
+    and above all a thrill to learn.
+  </p>
 </div>
 
 <div class="card">
@@ -274,32 +288,74 @@ strong {
   </div>
 </div>
 
-<div class="email-card" onclick="revealEmail(this)">
-  <span class="email-placeholder">Email</span>
-  <span class="email-text">sam.standeaven@gmail.com</span>
-</div>
-
 </div>
 
 <!-- RIGHT COLUMN -->
 <div class="column">
 
+<!-- PROJECTS -->
+<div class="card">
+  <div class="card-header">Some of my key projects 🎨</div>
+  <div class="divider"></div>
+
+  <div class="projects-overband">
+
+    <div class="project-copy active" data-project="sales">
+      <p>I created and rolled out a new enterprise sales process…</p>
+    </div>
+
+    <div class="project-copy" data-project="onboarding">
+      <p>Defined onboarding journey for pre-sale GTM teams…</p>
+    </div>
+
+    <div class="project-copy" data-project="engineering">
+      <p>Engineered & rolled out AI scorecards through Gong, Attention.tech & Aircall.</p>
+    </div>
+
+    <div class="project-copy" data-project="enablement">
+      <p>Led global product workshops across new SKU releases.</p>
+    </div>
+
+    <div class="project-overlay">
+      <div class="project-grid">
+        <div class="project-card active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
+        <div class="project-card" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
+        <div class="project-card" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
+        <div class="project-card" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOOLS -->
 <div class="card">
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
   <div class="tool-grid">
-    <div class="tool-card"><img src="Salesforce.png"></div>
-    <div class="tool-card"><img src="Outreach.png"></div>
-    <div class="tool-card"><img src="Highspot.png"></div>
-    <div class="tool-card"><img src="Hubspot.png"></div>
-    <div class="tool-card"><img src="Figma.png"></div>
-    <div class="tool-card"><img src="Aircall.png"></div>
-    <div class="tool-card"><img src="Zapier.png"></div>
+    <div class="tool-card"><img src="Salesforce.png" alt="Salesforce"></div>
+    <div class="tool-card"><img src="Outreach.png" alt="Outreach"></div>
+    <div class="tool-card"><img src="Highspot.png" alt="Highspot"></div>
+    <div class="tool-card"><img src="Hubspot.png" alt="HubSpot"></div>
+    <div class="tool-card"><img src="Figma.png" alt="Figma"></div>
+    <div class="tool-card"><img src="Aircall.png" alt="Aircall"></div>
+    <div class="tool-card"><img src="Zapier.png" alt="Zapier"></div>
   </div>
 </div>
 
+<!-- SIGNATURE + XP -->
+<div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px;">
+  <div>Sam Standeaven</div>
+  <div>3 years XP – SaaS – Europe</div>
 </div>
+
+</div>
+</div>
+
+<div class="email-card" onclick="revealEmail(this)">
+  <span class="email-placeholder">Email</span>
+  <span class="email-text">sam.standeaven@gmail.com</span>
 </div>
 
 <script>
@@ -317,6 +373,17 @@ setInterval(() => {
   quotes[currentQuote].classList.add("active");
   dots[currentQuote].classList.add("active");
 }, 4000);
+
+/* Project tabs */
+function showProject(card) {
+  const id = card.dataset.project;
+  document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
+  card.classList.add("active");
+
+  document.querySelectorAll(".project-copy").forEach(copy =>
+    copy.classList.toggle("active", copy.dataset.project === id)
+  );
+}
 
 /* Email reveal */
 function revealEmail(card) {
