@@ -23,22 +23,20 @@ body {
 p { color: rgba(0,0,0,0.85); }
 
 strong {
-  font-weight: 500; /* semi-bold */
+  font-weight: 500;
   color: rgba(0,0,0,0.95);
 }
 
-/* ===== Navigation ===== */
+/* ===== Navigation (NOT FIXED) ===== */
 .top-nav {
-  position: fixed;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   display: flex;
   gap: 12px;
   padding: 10px 16px;
   background: #F3F3F3;
   border-radius: 999px;
-  z-index: 10000;
+  width: fit-content;
+  margin: 0 auto 64px auto;
 }
 
 .nav-btn {
@@ -61,7 +59,7 @@ strong {
   display: flex;
   gap: 24px;
   max-width: 1440px;
-  margin: 120px auto 0;
+  margin: 0 auto;
 }
 
 .column {
@@ -125,7 +123,7 @@ strong {
   opacity: 1;
 }
 
-/* ===== Projects & Tools (shared patterns) ===== */
+/* ===== Shared Selectables ===== */
 .overlay {
   background: #FFFFFF;
   border-radius: 12px;
@@ -136,15 +134,14 @@ strong {
 .grid {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
 }
 
-.selectable {
+/* ===== Project buttons (unchanged) ===== */
+.project-btn {
   background: #F3F3F3;
   border-radius: 12px;
-  height: 72px;
+  height: 56px;
   flex: 1;
-  min-width: 120px;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -154,13 +151,32 @@ strong {
   transition: border-color 0.25s ease;
 }
 
-.selectable.active {
+.project-btn.active {
   border-color: #4FC88C;
 }
 
-.selectable img {
-  width: 52px;
-  height: 52px;
+/* ===== Tool buttons (ONE LINE) ===== */
+.tool-btn {
+  background: #F3F3F3;
+  border-radius: 12px;
+  height: 56px;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.tool-btn.active {
+  border-color: #4FC88C;
+}
+
+.tool-btn img {
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
 
@@ -174,18 +190,16 @@ strong {
   display: block;
 }
 
-/* ===== Email CTA ===== */
+/* ===== Email (NOT FIXED) ===== */
 .email-card {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
+  position: relative;
+  margin: 80px auto 0 auto;
   width: 286px;
   height: 68px;
   border-radius: 999px;
   background: #EDEDED;
   overflow: hidden;
   cursor: pointer;
-  z-index: 9999;
 }
 
 .email-progress {
@@ -219,7 +233,13 @@ strong {
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .container { flex-direction: column; }
+  .container {
+    flex-direction: column;
+  }
+
+  .grid {
+    overflow-x: auto;
+  }
 }
 </style>
 </head>
@@ -237,7 +257,6 @@ strong {
 <!-- LEFT COLUMN -->
 <div class="column">
 
-<!-- ABOUT (UNCHANGED COPY) -->
 <div class="card">
   <div class="card-header">A bit about me 💬</div>
   <div class="divider"></div>
@@ -271,7 +290,6 @@ strong {
   </p>
 </div>
 
-<!-- REFERENCES -->
 <div class="card">
   <div class="card-header">What some of my peers have said 💬</div>
   <div class="divider"></div>
@@ -294,7 +312,6 @@ strong {
 <!-- RIGHT COLUMN -->
 <div class="column">
 
-<!-- PROJECTS (UNCHANGED COPY) -->
 <div class="card">
   <div class="card-header">Some of my key projects 🎨</div>
   <div class="divider"></div>
@@ -314,15 +331,14 @@ strong {
 
   <div class="overlay">
     <div class="grid">
-      <div class="selectable active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
-      <div class="selectable" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
-      <div class="selectable" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
-      <div class="selectable" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
+      <div class="project-btn active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
+      <div class="project-btn" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
+      <div class="project-btn" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
+      <div class="project-btn" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
     </div>
   </div>
 </div>
 
-<!-- TOOLS -->
 <div class="card">
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
@@ -336,12 +352,12 @@ strong {
 
   <div class="overlay">
     <div class="grid">
-      <div class="selectable active" data-tool="outreach" onclick="showTool(this)"><img src="Outreach.png"></div>
-      <div class="selectable" data-tool="salesforce" onclick="showTool(this)"><img src="Salesforce.png"></div>
-      <div class="selectable" data-tool="hubspot" onclick="showTool(this)"><img src="Hubspot.png"></div>
-      <div class="selectable" data-tool="figma" onclick="showTool(this)"><img src="Figma.png"></div>
-      <div class="selectable" data-tool="highspot" onclick="showTool(this)"><img src="Highspot.png"></div>
-      <div class="selectable" data-tool="zapier" onclick="showTool(this)"><img src="Zapier.png"></div>
+      <div class="tool-btn active" data-tool="outreach" onclick="showTool(this)"><img src="Outreach.png"></div>
+      <div class="tool-btn" data-tool="salesforce" onclick="showTool(this)"><img src="Salesforce.png"></div>
+      <div class="tool-btn" data-tool="hubspot" onclick="showTool(this)"><img src="Hubspot.png"></div>
+      <div class="tool-btn" data-tool="figma" onclick="showTool(this)"><img src="Figma.png"></div>
+      <div class="tool-btn" data-tool="highspot" onclick="showTool(this)"><img src="Highspot.png"></div>
+      <div class="tool-btn" data-tool="zapier" onclick="showTool(this)"><img src="Zapier.png"></div>
     </div>
   </div>
 </div>
@@ -349,7 +365,7 @@ strong {
 </div>
 </div>
 
-<!-- EMAIL -->
+<!-- EMAIL AT BOTTOM -->
 <div class="email-card" onclick="revealEmail(this)">
   <div class="email-progress"></div>
   <div class="email-content">
@@ -362,7 +378,7 @@ strong {
 /* Projects */
 function showProject(el) {
   const id = el.dataset.project;
-  document.querySelectorAll('[data-project]').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.toggle-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.project === id)
@@ -372,7 +388,7 @@ function showProject(el) {
 /* Tools */
 function showTool(el) {
   const id = el.dataset.tool;
-  document.querySelectorAll('[data-tool]').forEach(e => e.classList.remove('active'));
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.toggle-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.tool === id)
@@ -406,5 +422,6 @@ function scrollToContact() {
 
 </body>
 </html>
+
 
 
