@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Portfolio</title>
+<title>Sam Standeaven – Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
+/* ===== Global ===== */
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
@@ -20,9 +21,13 @@ body {
 }
 
 p { color: rgba(0,0,0,0.85); }
-strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 
-/* ===== NAV ===== */
+strong {
+  font-weight: 500; /* semi-bold */
+  color: rgba(0,0,0,0.95);
+}
+
+/* ===== Navigation ===== */
 .top-nav {
   position: fixed;
   top: 24px;
@@ -51,7 +56,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   color: #fff;
 }
 
-/* ===== LAYOUT ===== */
+/* ===== Layout ===== */
 .container {
   display: flex;
   gap: 24px;
@@ -66,7 +71,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   gap: 24px;
 }
 
-/* ===== CARDS ===== */
+/* ===== Cards ===== */
 .card {
   background: #F3F3F3;
   border-radius: 16px;
@@ -85,7 +90,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   margin-bottom: 16px;
 }
 
-/* ===== QUOTES ===== */
+/* ===== Quotes ===== */
 .quote-wrapper {
   position: relative;
   min-height: 90px;
@@ -120,9 +125,9 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   opacity: 1;
 }
 
-/* ===== PROJECTS / TOOLS SHARED ===== */
+/* ===== Projects & Tools (shared patterns) ===== */
 .overlay {
-  background: #fff;
+  background: #FFFFFF;
   border-radius: 12px;
   padding: 16px;
   border: 1px solid rgba(0,0,0,0.06);
@@ -140,11 +145,13 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   height: 72px;
   flex: 1;
   min-width: 120px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
+  transition: border-color 0.25s ease;
 }
 
 .selectable.active {
@@ -157,11 +164,17 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   object-fit: contain;
 }
 
-/* ===== COPY TOGGLES ===== */
-.copy-block { display: none; margin-bottom: 16px; }
-.copy-block.active { display: block; }
+/* ===== Toggle Copy ===== */
+.toggle-copy {
+  display: none;
+  margin-bottom: 16px;
+}
 
-/* ===== EMAIL CTA ===== */
+.toggle-copy.active {
+  display: block;
+}
+
+/* ===== Email CTA ===== */
 .email-card {
   position: fixed;
   bottom: 24px;
@@ -172,6 +185,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   background: #EDEDED;
   overflow: hidden;
   cursor: pointer;
+  z-index: 9999;
 }
 
 .email-progress {
@@ -194,24 +208,16 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
   z-index: 2;
 }
 
-.email-card.revealed .email-progress {
-  width: 100%;
-}
-
-.email-card.revealed .email-placeholder {
-  opacity: 0;
-}
-
 .email-text {
   opacity: 0;
   position: absolute;
 }
 
-.email-card.revealed .email-text {
-  opacity: 1;
-}
+.email-card.revealed .email-progress { width: 100%; }
+.email-card.revealed .email-placeholder { opacity: 0; }
+.email-card.revealed .email-text { opacity: 1; }
 
-/* ===== RESPONSIVE ===== */
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
   .container { flex-direction: column; }
 }
@@ -220,6 +226,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 
 <body>
 
+<!-- NAV -->
 <div class="top-nav">
   <button class="nav-btn active">Overview</button>
   <button class="nav-btn" onclick="scrollToContact()">Contact</button>
@@ -227,20 +234,44 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 
 <div class="container">
 
-<!-- LEFT -->
+<!-- LEFT COLUMN -->
 <div class="column">
 
+<!-- ABOUT (UNCHANGED COPY) -->
 <div class="card">
   <div class="card-header">A bit about me 💬</div>
   <div class="divider"></div>
 
-  <p>Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes within a $200M ARR unicorn.</p>
+  <p>
+    Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes
+    within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.
+  </p>
 
-  <p>&gt; <strong>Bridge the technical to value:</strong> Engineering AI agents & automations.</p>
-  <p>&gt; <strong>Master communication:</strong> Aligning C-Suite & field teams.</p>
-  <p>&gt; <strong>Design creatively:</strong> Learning programs & visual assets.</p>
+  <p>
+    I’m looking to continue building, and to that I continuously bring enthusiasm
+    and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:
+  </p>
+
+  <p>
+    &gt; <strong>Bridge the technical to the value:</strong>
+    I've engineered AI Agents & tool automations. I want to further translate customer
+    challenges into scalable, technical solutions.
+  </p>
+
+  <p>
+    &gt; <strong>Master communications:</strong>
+    I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps.
+    I want to enhance my adaptability to my audience to lead the outcome I need.
+  </p>
+
+  <p>
+    &gt; <strong>Design creatively with autonomy:</strong>
+    I've created learning programs and designed visual assets for both internal teams & buyers.
+    I want to build on my skills to drive visual impact.
+  </p>
 </div>
 
+<!-- REFERENCES -->
 <div class="card">
   <div class="card-header">What some of my peers have said 💬</div>
   <div class="divider"></div>
@@ -260,31 +291,48 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 
 </div>
 
-<!-- RIGHT -->
+<!-- RIGHT COLUMN -->
 <div class="column">
 
+<!-- PROJECTS (UNCHANGED COPY) -->
+<div class="card">
+  <div class="card-header">Some of my key projects 🎨</div>
+  <div class="divider"></div>
+
+  <div class="toggle-copy active" data-project="sales">
+    <p>I created and rolled out a new enterprise sales process, mapping key entry & exit criteria across the buyer journey.</p>
+  </div>
+  <div class="toggle-copy" data-project="onboarding">
+    <p>Defined and managed an onboarding journey from scratch for GTM teams.</p>
+  </div>
+  <div class="toggle-copy" data-project="engineering">
+    <p>Engineered AI scorecards & voice agents to capture missed conversations.</p>
+  </div>
+  <div class="toggle-copy" data-project="enablement">
+    <p>Led global product workshops across new SKU releases.</p>
+  </div>
+
+  <div class="overlay">
+    <div class="grid">
+      <div class="selectable active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
+      <div class="selectable" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
+      <div class="selectable" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
+      <div class="selectable" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS -->
 <div class="card">
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
-  <div class="copy-block active" data-tool="outreach">
-    Partnered with Systems to implement Outreach and led global field enablement.
-  </div>
-  <div class="copy-block" data-tool="salesforce">
-    Built dashboards & led Salesforce onboarding for new reps.
-  </div>
-  <div class="copy-block" data-tool="hubspot">
-    Implemented HubSpot Live Chat & led global rollout.
-  </div>
-  <div class="copy-block" data-tool="figma">
-    Designed one-pagers & enablement assets in Figma.
-  </div>
-  <div class="copy-block" data-tool="highspot">
-    Ran Highspot governance & digital sales room templates.
-  </div>
-  <div class="copy-block" data-tool="zapier">
-    Built automations using Zapier & Make.
-  </div>
+  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams. I led the field enablement and continuously worked on Outreach to create and refine new sequences</div>
+  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards, which would then be communicated to our Leadership team. Conducted monthly product walkthroughs for new reps to onboarding on Salesforce</div>
+  <div class="toggle-copy" data-tool="hubspot">Partnered with our Systems team to define and tailor the implementation of HubSpot Live Chat as a means to centralise our inbound chats from prospects, and for which I led the global field enablement</div>
+  <div class="toggle-copy" data-tool="figma">Extensively used Figma to design external one-pagers & build enablement assets to help our teams with their learnings</div>
+  <div class="toggle-copy" data-tool="highspot">As the company administrator of Highspot, I ran continuous product deep-dives to increase tool adoption, built digital room templates to improve our buyer experience and managed the platform’s overall governance</div>
+  <div class="toggle-copy" data-tool="zapier">Through Zapier & Make, I built automations with tools like G.Sheet & Monday to create newsletters and automate our data reporting efforts</div>
 
   <div class="overlay">
     <div class="grid">
@@ -301,6 +349,7 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 </div>
 </div>
 
+<!-- EMAIL -->
 <div class="email-card" onclick="revealEmail(this)">
   <div class="email-progress"></div>
   <div class="email-content">
@@ -310,19 +359,27 @@ strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 </div>
 
 <script>
+/* Projects */
+function showProject(el) {
+  const id = el.dataset.project;
+  document.querySelectorAll('[data-project]').forEach(e => e.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.toggle-copy').forEach(c =>
+    c.classList.toggle('active', c.dataset.project === id)
+  );
+}
+
+/* Tools */
 function showTool(el) {
   const id = el.dataset.tool;
-  document.querySelectorAll('.selectable').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('[data-tool]').forEach(e => e.classList.remove('active'));
   el.classList.add('active');
-  document.querySelectorAll('.copy-block').forEach(c =>
+  document.querySelectorAll('.toggle-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.tool === id)
   );
 }
 
-function revealEmail(card) {
-  card.classList.add('revealed');
-}
-
+/* Quotes */
 let currentQuote = 0;
 const quotes = document.querySelectorAll('.quote');
 const dots = document.querySelectorAll('.dot');
@@ -337,11 +394,17 @@ function goQuote(i) {
 
 setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
 
+/* Email */
+function revealEmail(card) {
+  card.classList.add('revealed');
+}
+
 function scrollToContact() {
-  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
 }
 </script>
 
 </body>
 </html>
+
 
