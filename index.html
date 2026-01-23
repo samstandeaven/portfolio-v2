@@ -134,6 +134,8 @@ strong {
 .grid {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center; /* center like Marco.fyi */
 }
 
 /* ===== Project buttons ===== */
@@ -166,26 +168,23 @@ strong {
   cursor: pointer;
   border: 2px solid transparent;
   flex-shrink: 0;
+  overflow: hidden;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.tool-btn.active {
-  border-color: #4FC88C;
-}
-
 .tool-btn img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the entire button space */
+  transition: transform 0.3s ease;
 }
 
-/* Marco-style hover effect (optional) */
-.tool-btn:hover {
-  transform: scale(1.05);
-  opacity: 1;
+/* Marco-style hover effect */
+.tool-btn:hover img {
+  transform: scale(1.1);
 }
 
-/* ===== Toggle Copy ===== */
+/* Toggle Copy */
 .toggle-copy {
   display: none;
   margin-bottom: 16px;
@@ -195,7 +194,7 @@ strong {
   display: block;
 }
 
-/* ===== Email Button (Blunar-inspired) ===== */
+/* Email Button (Blunar-inspired) */
 .email-wrapper {
   margin: 80px 0 0 0;
 }
@@ -438,7 +437,7 @@ function toggleEmail(bar) {
       textEl.textContent += email[i];
       i++;
       if (i >= email.length) clearInterval(emailInterval);
-    }, 50); // adjust typing speed here
+    }, 50);
   }
 }
 
@@ -449,4 +448,3 @@ function scrollToContact() {
 
 </body>
 </html>
-
