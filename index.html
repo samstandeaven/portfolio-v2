@@ -29,7 +29,6 @@ strong {
 
 /* ===== Navigation ===== */
 .top-nav {
-  position: relative;
   display: flex;
   gap: 12px;
   padding: 10px 16px;
@@ -123,11 +122,11 @@ strong {
   opacity: 1;
 }
 
-/* ===== Shared Selectables ===== */
+/* ===== Shared Overlays ===== */
 .overlay {
   background: #FFFFFF;
   border-radius: 12px;
-  padding: 14px; /* 🔽 reduced overlay padding (~10%) */
+  padding: 14px;
   border: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -135,7 +134,7 @@ strong {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: flex-start; /* ✅ left aligned */
+  justify-content: flex-start;
 }
 
 /* ===== Project buttons ===== */
@@ -149,66 +148,60 @@ strong {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 3px solid transparent; /* 🔼 thicker border */
-  transition: border-color 0.25s ease, transform 0.2s ease;
+  border: 3px solid transparent;
+  transition: transform 0.2s ease, border-color 0.25s ease;
 }
 
 .project-btn.active {
   border-color: #4FC88C;
-  transform: scale(1.02); /* 🔼 stronger active emphasis */
+  transform: scale(1.02);
 }
 
-/* ===== Tool buttons (UPDATED) ===== */
+/* ===== Tool buttons ===== */
 .tool-btn {
-  background: #FFFFFF; /* ✅ white inner background */
+  background: #FFFFFF;
   border-radius: 12px;
-  height: 58px;        /* 🔽 reduced height (~10%) */
+  height: 58px;
   width: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 3px solid transparent; /* 🔼 thicker border */
-  flex-shrink: 0;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* subtle default shadow */
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  border: 3px solid transparent;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tool-btn img {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
-  transition: transform 0.25s ease;
+  width: 115%;            /* +15% size */
+  height: 115%;
+  object-fit: contain;    /* better Salesforce / Figma fit */
 }
 
-/* Hover & Active */
 .tool-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-.tool-btn:hover img {
-  transform: scale(1.1);
-}
-
 .tool-btn.active {
   border-color: #4FC88C;
-  transform: scale(1.1); /* 🔼 ~20% stronger emphasis */
+  transform: scale(1.1);
   box-shadow: 0 4px 14px rgba(0,0,0,0.16);
 }
 
 /* ===== Toggle Copy ===== */
-.toggle-copy {
+.project-copy,
+.tool-copy {
   display: none;
   margin-bottom: 16px;
 }
 
-.toggle-copy.active {
+.project-copy.active,
+.tool-copy.active {
   display: block;
 }
 
-/* ===== Email Button ===== */
+/* ===== Email ===== */
 .email-wrapper {
   margin: 80px 0 0 0;
 }
@@ -223,11 +216,6 @@ strong {
   padding: 8px;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease;
-}
-
-.email-bar:hover {
-  transform: translateY(-1px);
 }
 
 .email-circle {
@@ -238,13 +226,7 @@ strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
   margin-right: 16px;
-  transition: transform 0.4s ease;
-}
-
-.email-bar.revealed .email-circle {
-  transform: rotate(180deg);
 }
 
 .email-text {
@@ -256,10 +238,6 @@ strong {
 @media (max-width: 900px) {
   .container {
     flex-direction: column;
-  }
-
-  .grid {
-    overflow-x: auto;
   }
 }
 </style>
@@ -337,16 +315,16 @@ strong {
   <div class="card-header">Some of my key projects 🎨</div>
   <div class="divider"></div>
 
-  <div class="toggle-copy active" data-project="sales">
+  <div class="project-copy active" data-project="sales">
     <p>I created and rolled out a new enterprise sales process, mapping key entry & exit criteria across the buyer journey.</p>
   </div>
-  <div class="toggle-copy" data-project="onboarding">
+  <div class="project-copy" data-project="onboarding">
     <p>Defined and managed an onboarding journey from scratch for GTM teams.</p>
   </div>
-  <div class="toggle-copy" data-project="engineering">
+  <div class="project-copy" data-project="engineering">
     <p>Engineered AI scorecards & voice agents to capture missed conversations.</p>
   </div>
-  <div class="toggle-copy" data-project="enablement">
+  <div class="project-copy" data-project="enablement">
     <p>Led global product workshops across new SKU releases.</p>
   </div>
 
@@ -364,12 +342,24 @@ strong {
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
-  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams.</div>
-  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards.</div>
-  <div class="toggle-copy" data-tool="hubspot">Defined HubSpot Live Chat implementation.</div>
-  <div class="toggle-copy" data-tool="figma">Designed external one-pagers & enablement assets.</div>
-  <div class="toggle-copy" data-tool="highspot">Company admin & governance owner.</div>
-  <div class="toggle-copy" data-tool="zapier">Built automations using Zapier & Make.</div>
+  <div class="tool-copy active" data-tool="outreach">
+    Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams.
+  </div>
+  <div class="tool-copy" data-tool="salesforce">
+    Mainly used Salesforce to build reports & dashboards and conduct onboarding walkthroughs.
+  </div>
+  <div class="tool-copy" data-tool="hubspot">
+    Implemented HubSpot Live Chat and led global field enablement.
+  </div>
+  <div class="tool-copy" data-tool="figma">
+    Designed external one-pagers and enablement assets in Figma.
+  </div>
+  <div class="tool-copy" data-tool="highspot">
+    Ran Highspot governance and global enablement.
+  </div>
+  <div class="tool-copy" data-tool="zapier">
+    Built automations with Zapier & Make.
+  </div>
 
   <div class="overlay">
     <div class="grid">
@@ -395,24 +385,27 @@ strong {
 </div>
 
 <script>
+/* Projects */
 function showProject(el) {
   const id = el.dataset.project;
   document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  document.querySelectorAll('.toggle-copy').forEach(c =>
+  document.querySelectorAll('.project-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.project === id)
   );
 }
 
+/* Tools */
 function showTool(el) {
   const id = el.dataset.tool;
   document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
-  document.querySelectorAll('.toggle-copy').forEach(c =>
+  document.querySelectorAll('.tool-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.tool === id)
   );
 }
 
+/* Quotes */
 let currentQuote = 0;
 const quotes = document.querySelectorAll('.quote');
 const dots = document.querySelectorAll('.dot');
@@ -427,27 +420,20 @@ function goQuote(i) {
 
 setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
 
+/* Email reveal (faster, no arrow flip) */
 let emailInterval = null;
 
 function toggleEmail(bar) {
   const textEl = bar.querySelector('.email-text');
   const email = 'sam.standeaven@gmail.com';
-  const placeholder = 'Reveal email address';
-
-  if (bar.classList.contains('revealed')) {
-    bar.classList.remove('revealed');
-    clearInterval(emailInterval);
-    textEl.textContent = placeholder;
-  } else {
-    bar.classList.add('revealed');
-    textEl.textContent = '';
-    let i = 0;
-    emailInterval = setInterval(() => {
-      textEl.textContent += email[i];
-      i++;
-      if (i >= email.length) clearInterval(emailInterval);
-    }, 50);
-  }
+  textEl.textContent = '';
+  let i = 0;
+  clearInterval(emailInterval);
+  emailInterval = setInterval(() => {
+    textEl.textContent += email[i];
+    i++;
+    if (i >= email.length) clearInterval(emailInterval);
+  }, 40);
 }
 
 function scrollToContact() {
