@@ -27,7 +27,7 @@ strong {
   color: rgba(0,0,0,0.95);
 }
 
-/* ===== Navigation (NOT FIXED) ===== */
+/* ===== Navigation ===== */
 .top-nav {
   position: relative;
   display: flex;
@@ -36,7 +36,7 @@ strong {
   background: #F3F3F3;
   border-radius: 999px;
   width: fit-content;
-  margin: 0 auto 64px auto;
+  margin: 0 auto 24px auto; /* matches body padding */
 }
 
 .nav-btn {
@@ -136,7 +136,7 @@ strong {
   gap: 12px;
 }
 
-/* ===== Project buttons (unchanged) ===== */
+/* ===== Project buttons ===== */
 .project-btn {
   background: #F3F3F3;
   border-radius: 12px;
@@ -148,14 +148,13 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.25s ease;
 }
 
 .project-btn.active {
   border-color: #4FC88C;
 }
 
-/* ===== Tool buttons (ONE LINE) ===== */
+/* ===== Tool buttons ===== */
 .tool-btn {
   background: #F3F3F3;
   border-radius: 12px;
@@ -166,7 +165,6 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border-color 0.25s ease;
   flex-shrink: 0;
 }
 
@@ -190,46 +188,49 @@ strong {
   display: block;
 }
 
-/* ===== Email (NOT FIXED) ===== */
-.email-card {
-  position: relative;
-  margin: 80px auto 0 auto;
-  width: 286px;
-  height: 68px;
+/* ===== Email Button (Blunar-inspired) ===== */
+.email-wrapper {
+  margin: 80px 0 0 0;
+}
+
+.email-bar {
+  width: 320px;
+  height: 64px;
+  background: #F3F3F3;
   border-radius: 999px;
-  background: #EDEDED;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.email-progress {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 0%;
-  background: #4FC88C;
-  transition: width 0.6s ease;
-}
-
-.email-content {
-  position: relative;
-  height: 100%;
   display: flex;
   align-items: center;
-  padding-left: 24px;
-  font-weight: 500;
-  z-index: 2;
+  padding: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+}
+
+.email-bar:hover {
+  transform: translateY(-1px);
+}
+
+.email-circle {
+  width: 48px;
+  height: 48px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 16px;
+  transition: transform 0.4s ease;
 }
 
 .email-text {
-  opacity: 0;
-  position: absolute;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-.email-card.revealed .email-progress { width: 100%; }
-.email-card.revealed .email-placeholder { opacity: 0; }
-.email-card.revealed .email-text { opacity: 1; }
+.email-bar.revealed .email-circle {
+  transform: rotate(180deg);
+}
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
@@ -365,12 +366,11 @@ strong {
 </div>
 </div>
 
-<!-- EMAIL AT BOTTOM -->
-<div class="email-card" onclick="revealEmail(this)">
-  <div class="email-progress"></div>
-  <div class="email-content">
-    <span class="email-placeholder">Reveal email address →</span>
-    <span class="email-text">sam.standeaven@gmail.com</span>
+<!-- EMAIL -->
+<div class="email-wrapper">
+  <div class="email-bar" onclick="toggleEmail(this)">
+    <div class="email-circle">→</div>
+    <div class="email-text">Reveal email address</div>
   </div>
 </div>
 
@@ -410,9 +410,16 @@ function goQuote(i) {
 
 setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
 
-/* Email */
-function revealEmail(card) {
-  card.classList.add('revealed');
+/* Email toggle */
+function toggleEmail(bar) {
+  const text = bar.querySelector('.email-text');
+  bar.classList.toggle('revealed');
+
+  if (bar.classList.contains('revealed')) {
+    text.textContent = 'sam.standeaven@gmail.com';
+  } else {
+    text.textContent = 'Reveal email address';
+  }
 }
 
 function scrollToContact() {
