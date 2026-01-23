@@ -127,7 +127,7 @@ strong {
 .overlay {
   background: #FFFFFF;
   border-radius: 12px;
-  padding: 16px;
+  padding: 14px; /* 🔽 reduced overlay padding (~10%) */
   border: 1px solid rgba(0,0,0,0.06);
 }
 
@@ -135,7 +135,7 @@ strong {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: center; /* center like Marco.fyi */
+  justify-content: flex-start; /* ✅ left aligned */
 }
 
 /* ===== Project buttons ===== */
@@ -149,38 +149,40 @@ strong {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 3px solid transparent; /* 🔼 thicker border */
+  transition: border-color 0.25s ease, transform 0.2s ease;
 }
 
 .project-btn.active {
   border-color: #4FC88C;
+  transform: scale(1.02); /* 🔼 stronger active emphasis */
 }
 
-/* ===== Tool buttons (updated design) ===== */
+/* ===== Tool buttons (UPDATED) ===== */
 .tool-btn {
-  background: #FFFFFF;              /* white box */
+  background: #FFFFFF; /* ✅ white inner background */
   border-radius: 12px;
-  height: 64px;
-  width: 64px;                      /* square button */
+  height: 58px;        /* 🔽 reduced height (~10%) */
+  width: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 3px solid transparent; /* 🔼 thicker border */
   flex-shrink: 0;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* subtle shadow */
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* subtle default shadow */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .tool-btn img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* fill the entire button space */
-  transition: transform 0.3s ease;
+  width: 90%;
+  height: 90%;
+  object-fit: contain;
+  transition: transform 0.25s ease;
 }
 
-/* Hover / Active effects */
+/* Hover & Active */
 .tool-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
@@ -192,10 +194,11 @@ strong {
 
 .tool-btn.active {
   border-color: #4FC88C;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: scale(1.1); /* 🔼 ~20% stronger emphasis */
+  box-shadow: 0 4px 14px rgba(0,0,0,0.16);
 }
 
-/* Toggle Copy */
+/* ===== Toggle Copy ===== */
 .toggle-copy {
   display: none;
   margin-bottom: 16px;
@@ -205,7 +208,7 @@ strong {
   display: block;
 }
 
-/* Email Button (Blunar-inspired) */
+/* ===== Email Button ===== */
 .email-wrapper {
   margin: 80px 0 0 0;
 }
@@ -361,12 +364,12 @@ strong {
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
-  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams. I led the field enablement and continuously worked on Outreach to create and refine new sequences</div>
-  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards, which would then be communicated to our Leadership team. Conducted monthly product walkthroughs for new reps to onboarding on Salesforce</div>
-  <div class="toggle-copy" data-tool="hubspot">Partnered with our Systems team to define and tailor the implementation of HubSpot Live Chat as a means to centralise our inbound chats from prospects, and for which I led the global field enablement</div>
-  <div class="toggle-copy" data-tool="figma">Extensively used Figma to design external one-pagers & build enablement assets to help our teams with their learnings</div>
-  <div class="toggle-copy" data-tool="highspot">As the company administrator of Highspot, I ran continuous product deep-dives to increase tool adoption, built digital room templates to improve our buyer experience and managed the platform’s overall governance</div>
-  <div class="toggle-copy" data-tool="zapier">Through Zapier & Make, I built automations with tools like G.Sheet & Monday to create newsletters and automate our data reporting efforts</div>
+  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams.</div>
+  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards.</div>
+  <div class="toggle-copy" data-tool="hubspot">Defined HubSpot Live Chat implementation.</div>
+  <div class="toggle-copy" data-tool="figma">Designed external one-pagers & enablement assets.</div>
+  <div class="toggle-copy" data-tool="highspot">Company admin & governance owner.</div>
+  <div class="toggle-copy" data-tool="zapier">Built automations using Zapier & Make.</div>
 
   <div class="overlay">
     <div class="grid">
@@ -392,7 +395,6 @@ strong {
 </div>
 
 <script>
-/* Projects */
 function showProject(el) {
   const id = el.dataset.project;
   document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
@@ -402,7 +404,6 @@ function showProject(el) {
   );
 }
 
-/* Tools */
 function showTool(el) {
   const id = el.dataset.tool;
   document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
@@ -412,7 +413,6 @@ function showTool(el) {
   );
 }
 
-/* Quotes */
 let currentQuote = 0;
 const quotes = document.querySelectorAll('.quote');
 const dots = document.querySelectorAll('.dot');
@@ -427,7 +427,6 @@ function goQuote(i) {
 
 setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
 
-/* Email reveal letter-by-letter */
 let emailInterval = null;
 
 function toggleEmail(bar) {
@@ -437,13 +436,12 @@ function toggleEmail(bar) {
 
   if (bar.classList.contains('revealed')) {
     bar.classList.remove('revealed');
-    if (emailInterval) clearInterval(emailInterval);
+    clearInterval(emailInterval);
     textEl.textContent = placeholder;
   } else {
     bar.classList.add('revealed');
     textEl.textContent = '';
     let i = 0;
-    if (emailInterval) clearInterval(emailInterval);
     emailInterval = setInterval(() => {
       textEl.textContent += email[i];
       i++;
@@ -459,3 +457,4 @@ function scrollToContact() {
 
 </body>
 </html>
+
