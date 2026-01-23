@@ -29,6 +29,7 @@ strong {
 
 /* ===== Navigation ===== */
 .top-nav {
+  position: relative;
   display: flex;
   gap: 12px;
   padding: 10px 16px;
@@ -133,15 +134,14 @@ strong {
 .grid {
   display: flex;
   gap: 12px;
-  flex-wrap: nowrap;
 }
 
-/* ===== Buttons ===== */
-.project-btn,
-.tool-btn {
+/* ===== Project buttons ===== */
+.project-btn {
   background: #F3F3F3;
   border-radius: 12px;
   height: 56px;
+  flex: 1;
   padding: 12px;
   display: flex;
   align-items: center;
@@ -150,16 +150,26 @@ strong {
   border: 2px solid transparent;
 }
 
-.project-btn { flex: 1; }
-
-.project-btn.active,
-.tool-btn.active {
+.project-btn.active {
   border-color: #4FC88C;
 }
 
+/* ===== Tool buttons ===== */
 .tool-btn {
+  background: #F3F3F3;
+  border-radius: 12px;
+  height: 56px;
   width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
   flex-shrink: 0;
+}
+
+.tool-btn.active {
+  border-color: #4FC88C;
 }
 
 .tool-btn img {
@@ -178,13 +188,13 @@ strong {
   display: block;
 }
 
-/* ===== Email Bar ===== */
+/* ===== Email Button (Blunar-inspired) ===== */
 .email-wrapper {
   margin: 80px 0 0 0;
 }
 
 .email-bar {
-  width: 340px;
+  width: 320px;
   height: 64px;
   background: #F3F3F3;
   border-radius: 999px;
@@ -193,7 +203,11 @@ strong {
   padding: 8px;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.email-bar:hover {
+  transform: translateY(-1px);
 }
 
 .email-circle {
@@ -205,70 +219,30 @@ strong {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  font-weight: 400;
-  color: rgba(0,0,0,0.45);
   margin-right: 16px;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.email-content {
-  position: relative;
-  flex: 1;
-  overflow: hidden;
-}
-
-.email-placeholder,
-.email-address {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  white-space: nowrap;
-  font-weight: 500;
-}
-
-.email-address {
-  opacity: 0;
-  transform: translateY(-50%) translateX(-12px);
+  transition: transform 0.4s ease;
 }
 
 .email-bar.revealed .email-circle {
-  transform: translateX(8px);
+  transform: rotate(180deg);
 }
 
-.email-bar.revealed .email-placeholder {
-  opacity: 0;
-  transform: translateY(-50%) translateX(12px);
-}
-
-.email-bar.revealed .email-address {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-}
-
-/* ===== Calendar ===== */
-.calendar-card {
-  background: #F3F3F3;
-  border-radius: 16px;
-  padding: 32px;
-}
-
-.calendar-intro {
-  margin-bottom: 16px;
+.email-text {
   font-weight: 500;
-}
-
-.calendar-frame {
-  border-radius: 12px;
-  overflow: hidden;
-  opacity: 0.9;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  opacity: 1;
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .container { flex-direction: column; }
-  .grid { overflow-x: auto; }
+  .container {
+    flex-direction: column;
+  }
+
+  .grid {
+    overflow-x: auto;
+  }
 }
 </style>
 </head>
@@ -290,13 +264,50 @@ strong {
   <div class="card-header">A bit about me 💬</div>
   <div class="divider"></div>
 
-  <p>Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.</p>
+  <p>
+    Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes
+    within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.
+  </p>
 
-  <p>I’m looking to continue building, and to that I continuously bring enthusiasm and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:</p>
+  <p>
+    I’m looking to continue building, and to that I continuously bring enthusiasm
+    and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:
+  </p>
 
-  <p>&gt; <strong>Bridge the technical to the value:</strong> I've engineered AI Agents & tool automations.</p>
-  <p>&gt; <strong>Master communications:</strong> I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps.</p>
-  <p>&gt; <strong>Design creatively with autonomy:</strong> I've created learning programs and designed visual assets.</p>
+  <p>
+    &gt; <strong>Bridge the technical to the value:</strong>
+    I've engineered AI Agents & tool automations. I want to further translate customer
+    challenges into scalable, technical solutions.
+  </p>
+
+  <p>
+    &gt; <strong>Master communications:</strong>
+    I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps.
+    I want to enhance my adaptability to my audience to lead the outcome I need.
+  </p>
+
+  <p>
+    &gt; <strong>Design creatively with autonomy:</strong>
+    I've created learning programs and designed visual assets for both internal teams & buyers.
+    I want to build on my skills to drive visual impact.
+  </p>
+</div>
+
+<div class="card">
+  <div class="card-header">What some of my peers have said 💬</div>
+  <div class="divider"></div>
+
+  <div class="quote-wrapper">
+    <p class="quote active">“Sam has an exceptional ability to translate complex ideas into actionable outcomes.”</p>
+    <p class="quote">“One of the rare people who combines operational rigor with real creative thinking.”</p>
+    <p class="quote">“A natural owner — gives clarity, momentum, and direction to any project.”</p>
+  </div>
+
+  <div class="quote-dots">
+    <span class="dot active" onclick="goQuote(0)"></span>
+    <span class="dot" onclick="goQuote(1)"></span>
+    <span class="dot" onclick="goQuote(2)"></span>
+  </div>
 </div>
 
 </div>
@@ -308,17 +319,48 @@ strong {
   <div class="card-header">Some of my key projects 🎨</div>
   <div class="divider"></div>
 
-  <div class="toggle-copy active" data-project="sales">I created and rolled out a new enterprise sales process.</div>
-  <div class="toggle-copy" data-project="onboarding">Defined and managed an onboarding journey.</div>
-  <div class="toggle-copy" data-project="engineering">Engineered AI scorecards & voice agents.</div>
-  <div class="toggle-copy" data-project="enablement">Led global product workshops.</div>
+  <div class="toggle-copy active" data-project="sales">
+    <p>I created and rolled out a new enterprise sales process, mapping key entry & exit criteria across the buyer journey.</p>
+  </div>
+  <div class="toggle-copy" data-project="onboarding">
+    <p>Defined and managed an onboarding journey from scratch for GTM teams.</p>
+  </div>
+  <div class="toggle-copy" data-project="engineering">
+    <p>Engineered AI scorecards & voice agents to capture missed conversations.</p>
+  </div>
+  <div class="toggle-copy" data-project="enablement">
+    <p>Led global product workshops across new SKU releases.</p>
+  </div>
 
   <div class="overlay">
     <div class="grid">
-      <div class="project-btn active" data-project="sales" onclick="toggleProject(this)">Sales</div>
-      <div class="project-btn" data-project="onboarding" onclick="toggleProject(this)">Onboarding</div>
-      <div class="project-btn" data-project="engineering" onclick="toggleProject(this)">AI</div>
-      <div class="project-btn" data-project="enablement" onclick="toggleProject(this)">Enablement</div>
+      <div class="project-btn active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
+      <div class="project-btn" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
+      <div class="project-btn" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
+      <div class="project-btn" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">Tool expertise 🧰</div>
+  <div class="divider"></div>
+
+  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams. I led the field enablement and continuously worked on Outreach to create and refine new sequences</div>
+  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards, which would then be communicated to our Leadership team. Conducted monthly product walkthroughs for new reps to onboarding on Salesforce</div>
+  <div class="toggle-copy" data-tool="hubspot">Partnered with our Systems team to define and tailor the implementation of HubSpot Live Chat as a means to centralise our inbound chats from prospects, and for which I led the global field enablement</div>
+  <div class="toggle-copy" data-tool="figma">Extensively used Figma to design external one-pagers & build enablement assets to help our teams with their learnings</div>
+  <div class="toggle-copy" data-tool="highspot">As the company administrator of Highspot, I ran continuous product deep-dives to increase tool adoption, built digital room templates to improve our buyer experience and managed the platform’s overall governance</div>
+  <div class="toggle-copy" data-tool="zapier">Through Zapier & Make, I built automations with tools like G.Sheet & Monday to create newsletters and automate our data reporting efforts</div>
+
+  <div class="overlay">
+    <div class="grid">
+      <div class="tool-btn active" data-tool="outreach" onclick="showTool(this)"><img src="Outreach.png"></div>
+      <div class="tool-btn" data-tool="salesforce" onclick="showTool(this)"><img src="Salesforce.png"></div>
+      <div class="tool-btn" data-tool="hubspot" onclick="showTool(this)"><img src="Hubspot.png"></div>
+      <div class="tool-btn" data-tool="figma" onclick="showTool(this)"><img src="Figma.png"></div>
+      <div class="tool-btn" data-tool="highspot" onclick="showTool(this)"><img src="Highspot.png"></div>
+      <div class="tool-btn" data-tool="zapier" onclick="showTool(this)"><img src="Zapier.png"></div>
     </div>
   </div>
 </div>
@@ -328,42 +370,69 @@ strong {
 
 <!-- EMAIL -->
 <div class="email-wrapper">
-  <div class="email-bar" onclick="this.classList.toggle('revealed')">
+  <div class="email-bar" onclick="toggleEmail(this)">
     <div class="email-circle">→</div>
-    <div class="email-content">
-      <div class="email-placeholder">Reveal email address</div>
-      <div class="email-address">sam.standeaven@gmail.com</div>
-    </div>
-  </div>
-</div>
-
-<!-- CALENDAR -->
-<div class="calendar-card" style="margin-top:64px;">
-  <div class="calendar-intro">
-    If it feels relevant, you can grab time with me below.
-  </div>
-
-  <div class="calendar-frame">
-    <!-- 🔁 Replace src with your own Google Calendar embed -->
-    <iframe 
-      src="https://calendar.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&mode=AGENDA"
-      style="border:0"
-      width="100%"
-      height="420"
-      frameborder="0"
-      scrolling="no">
-    </iframe>
+    <div class="email-text">Reveal email address</div>
   </div>
 </div>
 
 <script>
-function toggleProject(el) {
+/* Projects */
+function showProject(el) {
   const id = el.dataset.project;
   document.querySelectorAll('.project-btn').forEach(b => b.classList.remove('active'));
   el.classList.add('active');
   document.querySelectorAll('.toggle-copy').forEach(c =>
     c.classList.toggle('active', c.dataset.project === id)
   );
+}
+
+/* Tools */
+function showTool(el) {
+  const id = el.dataset.tool;
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.toggle-copy').forEach(c =>
+    c.classList.toggle('active', c.dataset.tool === id)
+  );
+}
+
+/* Quotes */
+let currentQuote = 0;
+const quotes = document.querySelectorAll('.quote');
+const dots = document.querySelectorAll('.dot');
+
+function goQuote(i) {
+  quotes[currentQuote].classList.remove('active');
+  dots[currentQuote].classList.remove('active');
+  currentQuote = i;
+  quotes[currentQuote].classList.add('active');
+  dots[currentQuote].classList.add('active');
+}
+
+setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
+
+/* Email toggle with fade */
+function toggleEmail(bar) {
+  const text = bar.querySelector('.email-text');
+  const email = 'sam.standeaven@gmail.com';
+  const placeholder = 'Reveal email address';
+
+  if (!bar.classList.contains('revealed')) {
+    text.style.opacity = 0;
+    setTimeout(() => {
+      text.textContent = email;
+      text.style.opacity = 1;
+    }, 200);
+    bar.classList.add('revealed');
+  } else {
+    text.style.opacity = 0;
+    setTimeout(() => {
+      text.textContent = placeholder;
+      text.style.opacity = 1;
+    }, 200);
+    bar.classList.remove('revealed');
+  }
 }
 
 function scrollToContact() {
