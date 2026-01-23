@@ -2,16 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Portfolio Structure</title>
+<title>Portfolio</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== Global ===== */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -19,21 +15,14 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  letter-spacing: 0.01em;
   background: #FFFFFF;
-  color: #000000;
+  color: #000;
 }
 
-p {
-  color: rgba(0, 0, 0, 0.85);
-}
+p { color: rgba(0,0,0,0.85); }
+strong { font-weight: 500; color: rgba(0,0,0,0.95); }
 
-strong {
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.95);
-}
-
-/* ===== Embedded Top Navigation (UPDATED) ===== */
+/* ===== NAV ===== */
 .top-nav {
   position: fixed;
   top: 24px;
@@ -54,42 +43,39 @@ strong {
   background: transparent;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease;
 }
 
-.nav-btn:hover,
-.nav-btn.active {
+.nav-btn.active,
+.nav-btn:hover {
   background: #4FC88C;
   color: #fff;
 }
 
-/* ===== Container and Columns ===== */
+/* ===== LAYOUT ===== */
 .container {
   display: flex;
   gap: 24px;
   max-width: 1440px;
-  margin: 120px auto 0 auto;
+  margin: 120px auto 0;
 }
 
 .column {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex: 1;
 }
 
-/* ===== Cards ===== */
-.card,
-.small-card {
+/* ===== CARDS ===== */
+.card {
   background: #F3F3F3;
   border-radius: 16px;
   padding: 32px;
-  width: 100%;
 }
 
 .card-header {
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 500;
   margin-bottom: 12px;
 }
 
@@ -99,7 +85,7 @@ strong {
   margin-bottom: 16px;
 }
 
-/* ===== Quotes (UPDATED transitions + carousel) ===== */
+/* ===== QUOTES ===== */
 .quote-wrapper {
   position: relative;
   min-height: 90px;
@@ -108,13 +94,11 @@ strong {
 .quote {
   position: absolute;
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.4s ease;
   font-style: italic;
 }
 
-.quote.active {
-  opacity: 1;
-}
+.quote.active { opacity: 1; }
 
 .quote-dots {
   display: flex;
@@ -128,6 +112,7 @@ strong {
   border-radius: 50%;
   border: 1.5px solid #000;
   opacity: 0.4;
+  cursor: pointer;
 }
 
 .dot.active {
@@ -135,123 +120,106 @@ strong {
   opacity: 1;
 }
 
-/* ===== Email / Signature Button (UPDATED) ===== */
+/* ===== PROJECTS / TOOLS SHARED ===== */
+.overlay {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.selectable {
+  background: #F3F3F3;
+  border-radius: 12px;
+  height: 72px;
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.selectable.active {
+  border-color: #4FC88C;
+}
+
+.selectable img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+}
+
+/* ===== COPY TOGGLES ===== */
+.copy-block { display: none; margin-bottom: 16px; }
+.copy-block.active { display: block; }
+
+/* ===== EMAIL CTA ===== */
 .email-card {
   position: fixed;
   bottom: 24px;
   left: 24px;
-  width: 220px;
-  height: 56px;
+  width: 286px;
+  height: 68px;
   border-radius: 999px;
+  background: #EDEDED;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.email-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
   background: #4FC88C;
-  color: #fff;
+  transition: width 0.6s ease;
+}
+
+.email-content {
+  position: relative;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.25s ease;
-  z-index: 9999;
+  padding-left: 24px;
+  font-weight: 500;
+  z-index: 2;
 }
 
-.email-card:hover {
-  transform: scale(1.05);
-}
-
-.email-card span {
-  position: absolute;
-  transition: opacity 0.4s ease;
-  font-size: 0.8rem;
-}
-
-.email-text {
-  opacity: 0;
-}
-
-.email-card.revealed .email-text {
-  opacity: 1;
+.email-card.revealed .email-progress {
+  width: 100%;
 }
 
 .email-card.revealed .email-placeholder {
   opacity: 0;
 }
 
-/* ===== Projects (UNCHANGED) ===== */
-.project-copy {
-  display: none;
-  margin-bottom: 16px;
+.email-text {
+  opacity: 0;
+  position: absolute;
 }
 
-.project-copy.active {
-  display: block;
+.email-card.revealed .email-text {
+  opacity: 1;
 }
 
-.project-overlay {
-  background: #FFFFFF;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-
-.project-grid {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.project-card {
-  background: #F3F3F3;
-  border-radius: 12px;
-  height: 56px;
-  flex: 1;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.25s ease;
-}
-
-.project-card.active {
-  border-color: #4FC88C;
-}
-
-/* ===== Tools (LOGO NORMALIZATION FIX) ===== */
-.tool-grid {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.tool-card {
-  background: #F3F3F3;
-  border-radius: 12px;
-  height: 64px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tool-card img {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-}
-
-/* ===== Responsive ===== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
+  .container { flex-direction: column; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navigation -->
 <div class="top-nav">
   <button class="nav-btn active">Overview</button>
   <button class="nav-btn" onclick="scrollToContact()">Contact</button>
@@ -259,44 +227,20 @@ strong {
 
 <div class="container">
 
-<!-- LEFT COLUMN -->
+<!-- LEFT -->
 <div class="column">
 
-<!-- About -->
 <div class="card">
   <div class="card-header">A bit about me 💬</div>
   <div class="divider"></div>
 
-  <p>
-    Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes
-    within a $200M ARR unicorn, and prior building the executive teams of VC-backed startups.
-  </p>
+  <p>Hi I'm Sam 👋 I’ve spent the past couple of years creating selling processes within a $200M ARR unicorn.</p>
 
-  <p>
-    I’m looking to continue building, and to that I continuously bring enthusiasm
-    and above all a thrill to learn. I’m currently on the hunt for an environment where I can learn:
-  </p>
-
-  <p>
-    &gt; <strong>Bridge the technical to the value:</strong>
-    I've engineered AI Agents & tool automations. I want to further translate customer
-    challenges into scalable, technical solutions.
-  </p>
-
-  <p>
-    &gt; <strong>Master communications:</strong>
-    I've gathered buy-in from C-Suite, VPs and changed behaviours of field reps.
-    I want to enhance my adaptability to my audience to lead the outcome I need.
-  </p>
-
-  <p>
-    &gt; <strong>Design creatively with autonomy:</strong>
-    I've created learning programs and designed visual assets for both internal teams & buyers.
-    I want to build on my skills to drive visual impact.
-  </p>
+  <p>&gt; <strong>Bridge the technical to value:</strong> Engineering AI agents & automations.</p>
+  <p>&gt; <strong>Master communication:</strong> Aligning C-Suite & field teams.</p>
+  <p>&gt; <strong>Design creatively:</strong> Learning programs & visual assets.</p>
 </div>
 
-<!-- Quotes -->
 <div class="card">
   <div class="card-header">What some of my peers have said 💬</div>
   <div class="divider"></div>
@@ -308,110 +252,93 @@ strong {
   </div>
 
   <div class="quote-dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+    <span class="dot active" onclick="goQuote(0)"></span>
+    <span class="dot" onclick="goQuote(1)"></span>
+    <span class="dot" onclick="goQuote(2)"></span>
   </div>
 </div>
 
 </div>
 
-<!-- RIGHT COLUMN -->
+<!-- RIGHT -->
 <div class="column">
 
-<!-- Projects -->
-<div class="card">
-  <div class="card-header">Some of my key projects 🎨</div>
-  <div class="divider"></div>
-
-  <div class="project-copy active" data-project="sales">
-    <p>I created and rolled out a new enterprise sales process, mapping key entry & exit criteria across the buyer journey.</p>
-  </div>
-
-  <div class="project-copy" data-project="onboarding">
-    <p>Defined and managed an onboarding journey from scratch for GTM teams.</p>
-  </div>
-
-  <div class="project-copy" data-project="engineering">
-    <p>Engineered AI scorecards & voice agents to capture missed conversations.</p>
-  </div>
-
-  <div class="project-copy" data-project="enablement">
-    <p>Led global product workshops across new SKU releases.</p>
-  </div>
-
-  <div class="project-overlay">
-    <div class="project-grid">
-      <div class="project-card active" data-project="sales" onclick="showProject(this)">Sales Processes</div>
-      <div class="project-card" data-project="onboarding" onclick="showProject(this)">Sales Onboarding</div>
-      <div class="project-card" data-project="engineering" onclick="showProject(this)">AI Engineering</div>
-      <div class="project-card" data-project="enablement" onclick="showProject(this)">Product Enablement</div>
-    </div>
-  </div>
-</div>
-
-<!-- Tools -->
 <div class="card">
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
-  <div class="tool-grid">
-    <div class="tool-card"><img src="Salesforce.png"></div>
-    <div class="tool-card"><img src="Outreach.png"></div>
-    <div class="tool-card"><img src="Highspot.png"></div>
-    <div class="tool-card"><img src="Hubspot.png"></div>
-    <div class="tool-card"><img src="Figma.png"></div>
-    <div class="tool-card"><img src="Aircall.png"></div>
-    <div class="tool-card"><img src="Zapier.png"></div>
+  <div class="copy-block active" data-tool="outreach">
+    Partnered with Systems to implement Outreach and led global field enablement.
+  </div>
+  <div class="copy-block" data-tool="salesforce">
+    Built dashboards & led Salesforce onboarding for new reps.
+  </div>
+  <div class="copy-block" data-tool="hubspot">
+    Implemented HubSpot Live Chat & led global rollout.
+  </div>
+  <div class="copy-block" data-tool="figma">
+    Designed one-pagers & enablement assets in Figma.
+  </div>
+  <div class="copy-block" data-tool="highspot">
+    Ran Highspot governance & digital sales room templates.
+  </div>
+  <div class="copy-block" data-tool="zapier">
+    Built automations using Zapier & Make.
+  </div>
+
+  <div class="overlay">
+    <div class="grid">
+      <div class="selectable active" data-tool="outreach" onclick="showTool(this)"><img src="Outreach.png"></div>
+      <div class="selectable" data-tool="salesforce" onclick="showTool(this)"><img src="Salesforce.png"></div>
+      <div class="selectable" data-tool="hubspot" onclick="showTool(this)"><img src="Hubspot.png"></div>
+      <div class="selectable" data-tool="figma" onclick="showTool(this)"><img src="Figma.png"></div>
+      <div class="selectable" data-tool="highspot" onclick="showTool(this)"><img src="Highspot.png"></div>
+      <div class="selectable" data-tool="zapier" onclick="showTool(this)"><img src="Zapier.png"></div>
+    </div>
   </div>
 </div>
 
-<div style="display:flex; justify-content:space-between; margin-top:16px;">
-  <div>Sam Standeaven</div>
-  <div>3 years XP – SaaS – Europe</div>
-</div>
-
 </div>
 </div>
 
-<!-- Email -->
 <div class="email-card" onclick="revealEmail(this)">
-  <span class="email-placeholder">Email</span>
-  <span class="email-text">sam.standeaven@gmail.com</span>
+  <div class="email-progress"></div>
+  <div class="email-content">
+    <span class="email-placeholder">Reveal email address →</span>
+    <span class="email-text">sam.standeaven@gmail.com</span>
+  </div>
 </div>
 
 <script>
-/* Projects */
-function showProject(card) {
-  const id = card.dataset.project;
-  document.querySelectorAll(".project-card").forEach(c => c.classList.remove("active"));
-  card.classList.add("active");
-  document.querySelectorAll(".project-copy").forEach(copy =>
-    copy.classList.toggle("active", copy.dataset.project === id)
+function showTool(el) {
+  const id = el.dataset.tool;
+  document.querySelectorAll('.selectable').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.copy-block').forEach(c =>
+    c.classList.toggle('active', c.dataset.tool === id)
   );
 }
 
-/* Quotes */
-let currentQuote = 0;
-const quotes = document.querySelectorAll(".quote");
-const dots = document.querySelectorAll(".dot");
-
-setInterval(() => {
-  quotes[currentQuote].classList.remove("active");
-  dots[currentQuote].classList.remove("active");
-  currentQuote = (currentQuote + 1) % quotes.length;
-  quotes[currentQuote].classList.add("active");
-  dots[currentQuote].classList.add("active");
-}, 4000);
-
-/* Email */
 function revealEmail(card) {
-  card.classList.add("revealed");
+  card.classList.add('revealed');
 }
 
-/* Scroll */
+let currentQuote = 0;
+const quotes = document.querySelectorAll('.quote');
+const dots = document.querySelectorAll('.dot');
+
+function goQuote(i) {
+  quotes[currentQuote].classList.remove('active');
+  dots[currentQuote].classList.remove('active');
+  currentQuote = i;
+  quotes[currentQuote].classList.add('active');
+  dots[currentQuote].classList.add('active');
+}
+
+setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
+
 function scrollToContact() {
-  window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 </script>
 
