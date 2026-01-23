@@ -166,6 +166,7 @@ strong {
   cursor: pointer;
   border: 2px solid transparent;
   flex-shrink: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .tool-btn.active {
@@ -176,6 +177,12 @@ strong {
   width: 32px;
   height: 32px;
   object-fit: contain;
+}
+
+/* Marco-style hover effect (optional) */
+.tool-btn:hover {
+  transform: scale(1.05);
+  opacity: 1;
 }
 
 /* ===== Toggle Copy ===== */
@@ -230,8 +237,6 @@ strong {
 .email-text {
   font-weight: 500;
   white-space: nowrap;
-  transition: opacity 0.3s ease;
-  opacity: 1;
 }
 
 /* ===== Responsive ===== */
@@ -412,26 +417,28 @@ function goQuote(i) {
 
 setInterval(() => goQuote((currentQuote + 1) % quotes.length), 5000);
 
-/* Email toggle with fade */
+/* Email reveal letter-by-letter */
+let emailInterval = null;
+
 function toggleEmail(bar) {
-  const text = bar.querySelector('.email-text');
+  const textEl = bar.querySelector('.email-text');
   const email = 'sam.standeaven@gmail.com';
   const placeholder = 'Reveal email address';
 
-  if (!bar.classList.contains('revealed')) {
-    text.style.opacity = 0;
-    setTimeout(() => {
-      text.textContent = email;
-      text.style.opacity = 1;
-    }, 200);
-    bar.classList.add('revealed');
-  } else {
-    text.style.opacity = 0;
-    setTimeout(() => {
-      text.textContent = placeholder;
-      text.style.opacity = 1;
-    }, 200);
+  if (bar.classList.contains('revealed')) {
     bar.classList.remove('revealed');
+    if (emailInterval) clearInterval(emailInterval);
+    textEl.textContent = placeholder;
+  } else {
+    bar.classList.add('revealed');
+    textEl.textContent = '';
+    let i = 0;
+    if (emailInterval) clearInterval(emailInterval);
+    emailInterval = setInterval(() => {
+      textEl.textContent += email[i];
+      i++;
+      if (i >= email.length) clearInterval(emailInterval);
+    }, 50); // adjust typing speed here
   }
 }
 
@@ -442,7 +449,4 @@ function scrollToContact() {
 
 </body>
 </html>
-
-
-
 
