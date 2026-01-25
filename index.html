@@ -16,15 +16,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  background: #AEAAA2;
-  color: #FFFFFF;
+  background: #D1D1D1;
+  color: #1A1A1A;
 }
 
-p { color: rgba(255,255,255,0.9); }
+p { color: rgba(0,0,0,0.8); }
 
 strong {
   font-weight: 500;
-  color: #FFFFFF;
+  color: #1A1A1A;
 }
 
 /* ===== Navigation ===== */
@@ -33,7 +33,7 @@ strong {
   display: flex;
   gap: 12px;
   padding: 10px 16px;
-  background: #505C4A;
+  background: #1A1A1A;
   border-radius: 999px;
   width: fit-content;
   margin: 0 auto 24px auto;
@@ -51,7 +51,7 @@ strong {
 
 .nav-btn.active,
 .nav-btn:hover {
-  background: #451B26;
+  background: rgba(255,255,255,0.15);
   color: #FFFFFF;
 }
 
@@ -70,9 +70,9 @@ strong {
   gap: 24px;
 }
 
-/* ===== Cards ===== */
+/* ===== Cards / Sections ===== */
 .card {
-  background: #505C4A;
+  background: #959693;
   border-radius: 16px;
   padding: 32px;
 }
@@ -81,12 +81,12 @@ strong {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 12px;
-  color: #FFFFFF;
+  color: #1A1A1A;
 }
 
 .divider {
   height: 1px;
-  background: rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.2);
   margin-bottom: 16px;
 }
 
@@ -101,6 +101,7 @@ strong {
   opacity: 0;
   transition: opacity 0.4s ease;
   font-style: italic;
+  color: rgba(0,0,0,0.8);
 }
 
 .quote.active { opacity: 1; }
@@ -115,14 +116,14 @@ strong {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: 1.5px solid #FFFFFF;
+  border: 1.5px solid rgba(0,0,0,0.6);
   opacity: 0.4;
   cursor: pointer;
 }
 
 .dot.active {
-  background: #451B26;
-  border-color: #451B26;
+  background: #1A1A1A;
+  border-color: #1A1A1A;
   opacity: 1;
 }
 
@@ -148,7 +149,7 @@ strong {
 
 /* ===== Project buttons ===== */
 .project-btn {
-  background: #505C4A;
+  background: #959693;
   border-radius: 12px;
   height: 56px;
   flex: 1;
@@ -158,12 +159,12 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  color: #FFFFFF;
+  color: #1A1A1A;
 }
 
 .project-btn.active {
-  border-color: #451B26;
-  box-shadow: 0 0 0 2.4px rgba(69,27,38,0.35);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2.4px rgba(26,26,26,0.25);
 }
 
 /* ===== Tool buttons ===== */
@@ -187,23 +188,23 @@ strong {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.3s ease;
 }
 
 .tool-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 
 .tool-btn.active {
-  border-color: #451B26;
-  box-shadow: 0 0 0 2.4px rgba(69,27,38,0.35), 0 4px 12px rgba(0,0,0,0.2);
+  border-color: #1A1A1A;
+  box-shadow: 0 0 0 2.4px rgba(26,26,26,0.25), 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ===== Toggle Copy ===== */
 .toggle-copy {
   display: none;
   margin-bottom: 16px;
+  color: rgba(0,0,0,0.8);
 }
 
 .toggle-copy.active {
@@ -218,7 +219,7 @@ strong {
 .email-bar {
   width: 320px;
   height: 64px;
-  background: #451B26;
+  background: #1A1A1A;
   border-radius: 999px;
   display: flex;
   align-items: center;
@@ -230,7 +231,7 @@ strong {
 .email-circle {
   width: 48px;
   height: 48px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -363,12 +364,12 @@ strong {
   <div class="card-header">Tool expertise 🧰</div>
   <div class="divider"></div>
 
-  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams. I led the field enablement and continuously worked on Outreach to create and refine new sequences.</div>
-  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards, which would then be communicated to our Leadership team. Conducted monthly product walkthroughs for new reps to onboarding on Salesforce.</div>
-  <div class="toggle-copy" data-tool="hubspot">Partnered with our Systems team to define and tailor the implementation of HubSpot Live Chat as a means to centralise our inbound chats from prospects, and for which I led the global field enablement.</div>
-  <div class="toggle-copy" data-tool="figma">Extensively used Figma to design external one-pagers & build enablement assets to help our teams with their learnings.</div>
-  <div class="toggle-copy" data-tool="highspot">As company administrator, I ran continuous product deep-dives to increase tool adoption, built digital room templates to improve our buyer experience and managed the platform’s overall governance.</div>
-  <div class="toggle-copy" data-tool="zapier">Through Zapier & Make, I built automations with tools like G.Sheet & Monday to create newsletters and automate our data reporting efforts.</div>
+  <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams.</div>
+  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards and ran onboarding sessions.</div>
+  <div class="toggle-copy" data-tool="hubspot">Defined and enabled HubSpot Live Chat globally.</div>
+  <div class="toggle-copy" data-tool="figma">Designed external one-pagers & enablement assets in Figma.</div>
+  <div class="toggle-copy" data-tool="highspot">Owned governance, adoption and buyer experience templates.</div>
+  <div class="toggle-copy" data-tool="zapier">Built automations with Zapier & Make.</div>
 
   <div class="overlay">
     <div class="grid">
@@ -448,8 +449,6 @@ function scrollToContact() {
 
 </body>
 </html>
-
-
 
 
 
