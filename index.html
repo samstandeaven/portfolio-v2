@@ -16,15 +16,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  background: #FFFFFF;
-  color: #000;
+  background: #8FA1B1;
+  color: #FFFFFF;
 }
 
-p { color: rgba(0,0,0,0.85); }
+p { color: rgba(255,255,255,0.9); }
 
 strong {
   font-weight: 500;
-  color: rgba(0,0,0,0.95);
+  color: #FFFFFF;
 }
 
 /* ===== Navigation ===== */
@@ -33,7 +33,7 @@ strong {
   display: flex;
   gap: 12px;
   padding: 10px 16px;
-  background: #F3F3F3;
+  background: #23314A;
   border-radius: 999px;
   width: fit-content;
   margin: 0 auto 24px auto;
@@ -46,12 +46,13 @@ strong {
   background: transparent;
   font-weight: 500;
   cursor: pointer;
+  color: #FFFFFF;
 }
 
 .nav-btn.active,
 .nav-btn:hover {
-  background: #4FC88C;
-  color: #fff;
+  background: #DB8084;
+  color: #FFFFFF;
 }
 
 /* ===== Layout ===== */
@@ -71,7 +72,7 @@ strong {
 
 /* ===== Cards ===== */
 .card {
-  background: #F3F3F3;
+  background: #23314A;
   border-radius: 16px;
   padding: 32px;
 }
@@ -80,11 +81,12 @@ strong {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 12px;
+  color: #FFFFFF;
 }
 
 .divider {
   height: 1px;
-  background: rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.15);
   margin-bottom: 16px;
 }
 
@@ -113,13 +115,14 @@ strong {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  border: 1.5px solid #000;
+  border: 1.5px solid #FFFFFF;
   opacity: 0.4;
   cursor: pointer;
 }
 
 .dot.active {
-  background: #000;
+  background: #DB8084;
+  border-color: #DB8084;
   opacity: 1;
 }
 
@@ -127,8 +130,13 @@ strong {
 .overlay {
   background: #FFFFFF;
   border-radius: 12px;
-  padding: 14px; /* slightly tighter */
+  padding: 14px;
   border: 1px solid rgba(0,0,0,0.06);
+}
+
+.overlay p,
+.overlay strong {
+  color: #000000;
 }
 
 .grid {
@@ -140,7 +148,7 @@ strong {
 
 /* ===== Project buttons ===== */
 .project-btn {
-  background: #F3F3F3;
+  background: #23314A;
   border-radius: 12px;
   height: 56px;
   flex: 1;
@@ -150,19 +158,21 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
+  color: #FFFFFF;
 }
 
 .project-btn.active {
-  border-color: #4FC88C;
-  box-shadow: 0 0 0 2.4px rgba(79,200,140,0.25);
+  background: #DB8084;
+  border-color: #DB8084;
+  box-shadow: 0 0 0 2.4px rgba(219,128,132,0.35);
 }
 
 /* ===== Tool buttons ===== */
 .tool-btn {
   background: #FFFFFF;
   border-radius: 12px;
-  height: 64px; /* increased from 56px */
-  width: 64px;  /* increased from 56px */
+  height: 64px;
+  width: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +180,7 @@ strong {
   border: 2px solid transparent;
   flex-shrink: 0;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -183,12 +193,12 @@ strong {
 
 .tool-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .tool-btn.active {
-  border-color: #4FC88C;
-  box-shadow: 0 0 0 2.4px rgba(79,200,140,0.25), 0 4px 12px rgba(0,0,0,0.15);
+  border-color: #DB8084;
+  box-shadow: 0 0 0 2.4px rgba(219,128,132,0.35), 0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ===== Toggle Copy ===== */
@@ -209,30 +219,32 @@ strong {
 .email-bar {
   width: 320px;
   height: 64px;
-  background: #F3F3F3;
+  background: #23314A;
   border-radius: 999px;
   display: flex;
   align-items: center;
   padding: 8px;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
 }
 
 .email-circle {
   width: 48px;
   height: 48px;
-  background: #FFFFFF;
+  background: #DB8084;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   margin-right: 16px;
+  color: #FFFFFF;
 }
 
 .email-text {
   font-weight: 500;
   white-space: nowrap;
+  color: #FFFFFF;
 }
 
 /* ===== Responsive ===== */
