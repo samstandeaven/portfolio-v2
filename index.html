@@ -16,7 +16,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.6;
-  background: #D1D1D1;
+  background: #E8E8E8;
   color: #1A1A1A;
 }
 
@@ -52,7 +52,6 @@ strong {
 .nav-btn.active,
 .nav-btn:hover {
   background: rgba(255,255,255,0.15);
-  color: #FFFFFF;
 }
 
 /* ===== Layout ===== */
@@ -70,9 +69,9 @@ strong {
   gap: 24px;
 }
 
-/* ===== Cards / Sections ===== */
+/* ===== Cards ===== */
 .card {
-  background: #959693;
+  background: #D1D1D1;
   border-radius: 16px;
   padding: 32px;
 }
@@ -81,7 +80,6 @@ strong {
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 12px;
-  color: #1A1A1A;
 }
 
 .divider {
@@ -101,7 +99,6 @@ strong {
   opacity: 0;
   transition: opacity 0.4s ease;
   font-style: italic;
-  color: rgba(0,0,0,0.8);
 }
 
 .quote.active { opacity: 1; }
@@ -129,27 +126,21 @@ strong {
 
 /* ===== Shared Selectables ===== */
 .overlay {
-  background: #FFFFFF;
+  background: #E8E8E8;
   border-radius: 12px;
   padding: 14px;
-  border: 1px solid rgba(0,0,0,0.06);
-}
-
-.overlay p,
-.overlay strong {
-  color: #000000;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 .grid {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  justify-content: flex-start;
 }
 
 /* ===== Project buttons ===== */
 .project-btn {
-  background: #959693;
+  background: #D1D1D1;
   border-radius: 12px;
   height: 56px;
   flex: 1;
@@ -159,7 +150,6 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  color: #1A1A1A;
 }
 
 .project-btn.active {
@@ -178,10 +168,8 @@ strong {
   justify-content: center;
   cursor: pointer;
   border: 2px solid transparent;
-  flex-shrink: 0;
-  overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .tool-btn img {
@@ -197,14 +185,14 @@ strong {
 
 .tool-btn.active {
   border-color: #1A1A1A;
-  box-shadow: 0 0 0 2.4px rgba(26,26,26,0.25), 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 0 0 2.4px rgba(26,26,26,0.25),
+              0 4px 12px rgba(0,0,0,0.2);
 }
 
 /* ===== Toggle Copy ===== */
 .toggle-copy {
   display: none;
   margin-bottom: 16px;
-  color: rgba(0,0,0,0.8);
 }
 
 .toggle-copy.active {
@@ -243,15 +231,12 @@ strong {
 
 .email-text {
   font-weight: 500;
-  white-space: nowrap;
   color: #FFFFFF;
 }
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
-  .container {
-    flex-direction: column;
-  }
+  .container { flex-direction: column; }
 }
 </style>
 </head>
@@ -338,8 +323,7 @@ strong {
     <p>Defined & deployed AI Voice Agents on sales inbound lines to capture all missed conversations.</p>
   </div>
   <div class="toggle-copy" data-project="enablement">
-    <p>Led global product workshops across the release of new SKUs to enable GTM teams on value positioning best practices.</p> 
-    <p>See an example here.</p>
+    <p>Led global product workshops across the release of new SKUs to enable GTM teams on value positioning best practices.</p>
   </div>
 
   <div class="overlay">
@@ -365,11 +349,11 @@ strong {
   <div class="divider"></div>
 
   <div class="toggle-copy active" data-tool="outreach">Partnered with our Systems team to define and tailor the implementation of Outreach to our GTM teams.</div>
-  <div class="toggle-copy" data-tool="salesforce">Mainly used Salesforce to build reports & dashboards and ran onboarding sessions.</div>
-  <div class="toggle-copy" data-tool="hubspot">Defined and enabled HubSpot Live Chat globally.</div>
-  <div class="toggle-copy" data-tool="figma">Designed external one-pagers & enablement assets in Figma.</div>
-  <div class="toggle-copy" data-tool="highspot">Owned governance, adoption and buyer experience templates.</div>
-  <div class="toggle-copy" data-tool="zapier">Built automations with Zapier & Make.</div>
+  <div class="toggle-copy" data-tool="salesforce">Built reports & dashboards in Salesforce and ran onboarding walkthroughs.</div>
+  <div class="toggle-copy" data-tool="hubspot">Led global enablement for HubSpot Live Chat.</div>
+  <div class="toggle-copy" data-tool="figma">Designed enablement assets & external one-pagers in Figma.</div>
+  <div class="toggle-copy" data-tool="highspot">Owned Highspot governance & buyer room templates.</div>
+  <div class="toggle-copy" data-tool="zapier">Built automations via Zapier & Make.</div>
 
   <div class="overlay">
     <div class="grid">
@@ -449,6 +433,7 @@ function scrollToContact() {
 
 </body>
 </html>
+
 
 
 
